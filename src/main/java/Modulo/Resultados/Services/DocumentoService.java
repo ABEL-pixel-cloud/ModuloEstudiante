@@ -67,7 +67,7 @@ public class DocumentoService implements DocumentacionService{
 
             // Guardamos la nueva documentación
             return documentacionRepository.save(nuevaDocumentacion);
-        } else {
+        }
             // No hay documentación existente, simplemente creamos una nueva
             String filenameDocumento = StringUtils.cleanPath(Objects.requireNonNull(documento.getOriginalFilename()));
             String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
@@ -86,7 +86,8 @@ public class DocumentoService implements DocumentacionService{
 
             // Guardamos la nueva documentación
             return documentacionRepository.save(documentacion);
-        }
+
+
     }
 
 
