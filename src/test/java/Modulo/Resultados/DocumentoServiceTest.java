@@ -40,7 +40,7 @@ public class DocumentoServiceTest {
     @Test
     public void testStore_DocumentacionExistente() throws IOException {
         // Arrange
-        Long cedulaAspirante = 12345L;  // creamos el numero de cedula para el aspirante
+        Long cedulaAspirante = 12345L;  // creamos él numero de cedula para el aspirante
         //Se crean objetos MockMultipartFile simulados para representar los archivos que se cargarán durante las pruebas.
         MockMultipartFile file = new MockMultipartFile("file", "test.txt", "text/plain", "test data".getBytes());
         MockMultipartFile documento = new MockMultipartFile("documento", "documento.txt", "text/plain", "documento data".getBytes());
@@ -51,10 +51,10 @@ public class DocumentoServiceTest {
         Documentacion documentacionMock = new Documentacion();
         when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));
 
-        // Act   se llama el metodo store y pasamos archivos simulados
+        // Act  se llama el metodo store y pasamos archivos simulados
         Documentacion resultado = documentacionService.store(file, documento, cedulaAspirante);
 
-        // Assert   verificamos si el resultado obtenido es el esperado
+        // Assert  verificamos si el resultado obtenido es el esperado
         assertEquals(documentacionMock, resultado);
     }
 
