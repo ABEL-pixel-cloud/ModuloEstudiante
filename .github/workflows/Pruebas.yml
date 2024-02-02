@@ -19,8 +19,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Exclude vulnerable dependency during tests
-        run: sed -i '/com.jayway.jsonpath:json-path/d' pom.xml
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Test with Maven
