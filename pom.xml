@@ -52,12 +52,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>com.jayway.jsonpath</groupId>
-					<artifactId>json-path</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 
@@ -79,6 +73,10 @@
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+						</exclude>
+						<exclude>
+							<groupId>com.jayway.jsonpath</groupId>
+							<artifactId>json-path</artifactId>
 						</exclude>
 					</excludes>
 				</configuration>
