@@ -8,11 +8,11 @@ import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Services.AspiranteService;
 import Modulo.Resultados.Services.DocumentoService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
@@ -21,14 +21,10 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 import java.util.Optional;
 
-
-import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
-
-@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class DocumentoServiceTest {
     @Mock
