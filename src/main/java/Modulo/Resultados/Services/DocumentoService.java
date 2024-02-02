@@ -42,32 +42,54 @@ public class DocumentoService implements DocumentacionService{
         Optional<Documentacion> documentacionExistente = documentacionRepository.findByAspirante(aspirante);
 
         if (documentacionExistente.isPresent()) {
-            // si ya hay una documentación existente, entonces vamos a sobrescribir
+            // si Ya hay una documentación existente, entonces vamos a sobrescribir
             Documentacion documentacionAnterior = documentacionExistente.get();
 
             // Eliminamos la documentación anterior
             documentacionRepository.delete(documentacionAnterior);
+
+            // Creamos la nueva documentación
+            String filenameDocumento = StringUtils.cleanPath(Objects.requireNonNull(documento.getOriginalFilename()));
+            String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+            Documentacion nuevaDocumentacion = Documentacion.builder()
+                    .documentoActa(filename)
+                    .documentoCedula(filenameDocumento)
+                    .tipoDocumentoacta(file.getContentType())
+                    .tipoDocumentocedula(documento.getContentType())
+                    .nombreAspirante(aspirante.getNombresCompletos())
+                    .cedulaAspirante(aspirante.getDocumento())
+                    .estadoDocumentos(false)
+                    .dataDocumentoActa(file.getBytes())
+                    .dataDocumentoCedula(documento.getBytes())
+                    .aspirante(aspirante)
+                    .build();
+
+
+            // Guardamos la nueva documentación
+            return documentacionRepository.save(nuevaDocumentacion);
+        } else {
+            // No hay documentación existente, simplemente creamos una nueva
+            String filenameDocumento = StringUtils.cleanPath(Objects.requireNonNull(documento.getOriginalFilename()));
+            String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+            Documentacion documentacion = Documentacion.builder()
+                    .documentoActa(filename)
+                    .documentoCedula(filenameDocumento)
+                    .tipoDocumentoacta(file.getContentType())
+                    .tipoDocumentocedula(documento.getContentType())
+                    .nombreAspirante(aspirante.getNombresCompletos())
+                    .cedulaAspirante(aspirante.getDocumento())
+                    .estadoDocumentos(false)
+                    .dataDocumentoActa(file.getBytes())
+                    .dataDocumentoCedula(documento.getBytes())
+                    .aspirante(aspirante)
+                    .build();
+
+            // Guardamos la nueva documentación
+            return documentacionRepository.save(documentacion);
         }
 
-        // Creamos la nueva documentación
-        String filenameDocumento = StringUtils.cleanPath(Objects.requireNonNull(documento.getOriginalFilename()));
-        String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
-        Documentacion nuevaDocumentacion = Documentacion.builder()
-                .documentoActa(filename)
-                .documentoCedula(filenameDocumento)
-                .tipoDocumentoacta(file.getContentType())
-                .tipoDocumentocedula(documento.getContentType())
-                .nombreAspirante(aspirante.getNombresCompletos())
-                .cedulaAspirante(aspirante.getDocumento())
-                .estadoDocumentos(false)
-                .dataDocumentoActa(file.getBytes())
-                .dataDocumentoCedula(documento.getBytes())
-                .aspirante(aspirante)
-                .build();
-
-        // Guardamos la nueva documentación
-        return documentacionRepository.save(nuevaDocumentacion);
     }
+
 
 
     @Override
