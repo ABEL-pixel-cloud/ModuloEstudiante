@@ -29,6 +29,10 @@ public class DocumentoService implements DocumentacionService{
         this.aspiranteService = aspiranteService;
     }
 
+    public DocumentoService() {
+
+    }
+
 
     @Override
     public Documentacion store(MultipartFile file, MultipartFile documento, Long cedulaAspirante) throws IOException {
