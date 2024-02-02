@@ -9,17 +9,27 @@ import Modulo.Resultados.Services.AspiranteService;
 import Modulo.Resultados.Services.DocumentoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.IOException;
+import static org.mockito.Mockito.*;
 import java.util.Optional;
 
+
+import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
+
+
 @ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class DocumentoServiceTest {
     @Mock
     private AspiranteService aspiranteService;
@@ -36,24 +46,32 @@ public class DocumentoServiceTest {
 
 
     @Test
-    public void testStore_DocumentacionExistente() throws IOException {
-        // Arrange
-        Long cedulaAspirante = 12345L;  // creamos él numero de cedula para el aspirante
-        //Se crean objetos MockMultipartFile simulados para representar los archivos que se cargarán durante las pruebas.
-        MockMultipartFile file = new MockMultipartFile("file", "test.txt", "text/plain", "test data".getBytes());
-        MockMultipartFile documento = new MockMultipartFile("documento", "documento.txt", "text/plain", "documento data".getBytes());
-        // se crea un aspirante de prueba
-        Aspirante aspiranteMock = new Aspirante();
+    void testStore() throws IOException {
+        // Mock data
+        Long cedulaAspirante = 123456789L;
+        Aspirante aspirante = new Aspirante();
+        aspirante.setDocumento(cedulaAspirante);
+        when(aspiranteService.verificarAspirantesyValidarDocumentacion(cedulaAspirante)).thenReturn(aspirante);
 
-        when(aspiranteService.verificarAspirantesyValidarDocumentacion(cedulaAspirante)).thenReturn(aspiranteMock);
-        // crea una documentación de prueba
-        Documentacion documentacionMock = new Documentacion();
-        when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));
+        // Existing document
+        Documentacion existingDocumentacion = new Documentacion();
+        existingDocumentacion.setAspirante(aspirante);
+        when(documentacionRepository.findByAspirante(aspirante)).thenReturn(Optional.of(existingDocumentacion));
 
-        // Act  se llama el metodo store y pasamos archivos simulados
-        Documentacion resultado = documentoService.store(file, documento, cedulaAspirante);
-        // Assert  verificamos si el resultado obtenido es el esperado
-        assertEquals(documentacionMock, resultado);
+        // Mock files
+        MockMultipartFile file = new MockMultipartFile("file", "filename.txt", "text/plain", "file content".getBytes());
+        MockMultipartFile documento = new MockMultipartFile("documento", "documento.txt", "text/plain", "documento content".getBytes());
+
+        // Test method
+        Documentacion result = documentoService.store(file, documento, cedulaAspirante);
+
+        // Assertions
+        assertEquals(aspirante, result.getAspirante());
+        // Add more assertions based on your requirements
+
+        verify(documentacionRepository, times(1)).delete(existingDocumentacion);
+        verify(documentacionRepository, times(1)).save(ArgumentMatchers.any(Documentacion.class));
+
     }
 
 
