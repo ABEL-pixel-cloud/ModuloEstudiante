@@ -6,9 +6,7 @@ import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Services.AspiranteService;
-import Modulo.Resultados.Services.DocumentacionService;
 import Modulo.Resultados.Services.DocumentoService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,7 +31,7 @@ public class DocumentoServiceTest {
 
     //inyectamos el mock al servicio documentacionservice
     @InjectMocks
-    private DocumentacionService documentacionService;
+    private DocumentoService documentoService;
 
 
 
@@ -52,7 +50,7 @@ public class DocumentoServiceTest {
         when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));
 
         // Act  se llama el metodo store y pasamos archivos simulados
-        Documentacion resultado = documentacionService.store(file, documento, cedulaAspirante);
+        Documentacion resultado = documentoService.store(file, documento, cedulaAspirante);
 
         // Assert  verificamos si el resultado obtenido es el esperado
         assertEquals(documentacionMock, resultado);
