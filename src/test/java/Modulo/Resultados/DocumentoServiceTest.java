@@ -29,7 +29,7 @@ public class DocumentoServiceTest {
     @Mock
     private IDocumentacionRepository documentacionRepository;
 
-    //inyectamos el mock al servicio documentacionservice
+    //inyectamos el mock al servicio documentacionService
     @InjectMocks
     private DocumentoService documentoService;
 
@@ -48,10 +48,8 @@ public class DocumentoServiceTest {
         // crea una documentación de prueba
         Documentacion documentacionMock = new Documentacion();
         when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));
-
         // Act  se llama el metodo store y pasamos archivos simulados
         Documentacion resultado = documentoService.store(file, documento, cedulaAspirante);
-
         // Assert  verificamos si el resultado obtenido es el esperado
         assertEquals(documentacionMock, resultado);
     }
