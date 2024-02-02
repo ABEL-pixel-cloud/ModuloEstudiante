@@ -10,8 +10,10 @@ import Modulo.Resultados.Services.DocumentacionService;
 import Modulo.Resultados.Services.DocumentoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.IOException;
@@ -19,7 +21,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
-
+@ExtendWith(MockitoExtension.class)
 public class DocumentoServiceTest {
     @Mock
     private AspiranteService aspiranteService;
@@ -33,11 +35,7 @@ public class DocumentoServiceTest {
     @InjectMocks
     private DocumentacionService documentacionService;
 
-    // ejecutar antes de cada metodo de prueba
-    @BeforeEach
-    void beforeEach(){
-        this.documentacionService= new DocumentoService();
-    }
+
 
     @Test
     public void testStore_DocumentacionExistente() throws IOException {
@@ -53,10 +51,10 @@ public class DocumentoServiceTest {
         Documentacion documentacionMock = new Documentacion();
         when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));
 
-        // Act
+        // Act   se llama el metodo store y pasamos archivos simulados
         Documentacion resultado = documentacionService.store(file, documento, cedulaAspirante);
 
-        // Assert
+        // Assert   verificamos si el resultado obtenido es el esperado
         assertEquals(documentacionMock, resultado);
     }
 
