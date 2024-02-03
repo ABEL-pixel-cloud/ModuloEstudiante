@@ -3,7 +3,7 @@ package Modulo.Resultados.Dtos;
 
 
 
-import Modulo.Resultados.Entity.Aspirante;
+import Modulo.Resultados.Entity.Estudiante;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +14,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor // genera un constructor sin argumentos
 @AllArgsConstructor // constructor con todos los parametros
-public class ReciveDocumentosDto {
-    private List<Aspirante> idAspirante;
+public class ReciveCohortesDto {
+    private List<Estudiante> idEstudiante;
 
-    private Boolean estado;
+    private String cohorte;
 
-    public List<Aspirante> getIdAspirante() {
-        return idAspirante;
+    public List<Estudiante> getIdEstudiante() {
+        return idEstudiante;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public String getCohorte() {
+        return cohorte;
     }
 }

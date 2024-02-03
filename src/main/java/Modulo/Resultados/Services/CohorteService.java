@@ -14,31 +14,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class ServiceCohorte {
+public class CohorteService {
 
 
     private IEstudianteRepository estudianteRepository;
-    private IAspiranteRepository aspiranteRepository;
-    private IDocumentacionRepository documentacionRepository;
 
     private ICohorteRepository cohorteRepository;
 
     @Autowired
-    public ServiceCohorte(IEstudianteRepository estudianteRepository,
-                          IAspiranteRepository aspiranteRepository,
-                          IDocumentacionRepository documentacionRepository,
+    public CohorteService(IEstudianteRepository estudianteRepository,
                           ICohorteRepository cohorteRepository) {
         this.estudianteRepository = estudianteRepository;
-        this.aspiranteRepository = aspiranteRepository;
-        this.documentacionRepository = documentacionRepository;
         this.cohorteRepository = cohorteRepository;
     }
-
-
-
-
-
-
 
 
     public void CreacionDeCohorte(List<Estudiante> estudiantes, String cohorte) {

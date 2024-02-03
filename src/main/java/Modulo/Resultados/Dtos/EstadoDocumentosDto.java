@@ -1,8 +1,11 @@
 package Modulo.Resultados.Dtos;
 
 
-import lombok.Builder;
+import lombok.*;
 
+@Getter // genera metodos getter para todos los metodos de la clase
+@Setter
+@NoArgsConstructor // genera un constructor sin argumentos
 @Builder
 public class EstadoDocumentosDto {
     private Long idAspirante;

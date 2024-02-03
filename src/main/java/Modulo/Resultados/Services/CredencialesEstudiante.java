@@ -22,14 +22,14 @@ public class CredencialesEstudiante {
 
 
     private IDocumentacionRepository documentacionRepository;
-    private EmailServiceImpl emailService;
+    private EmailService emailService;
 
     private IAspiranteRepository aspiranteRepository;
     private IEstudianteRepository estudianteRepository;
 
     @Autowired
     public CredencialesEstudiante(IDocumentacionRepository documentacionRepository,
-                                  EmailServiceImpl emailService,
+                                  EmailService emailService,
                                   IAspiranteRepository aspiranteRepository,
                                   IEstudianteRepository estudianteRepository) {
         this.documentacionRepository = documentacionRepository;

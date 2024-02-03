@@ -1,5 +1,12 @@
 package Modulo.Resultados.Dtos;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter // genera metodos getter para todos los metodos de la clase
+@Setter
+@AllArgsConstructor // constructor con todos los parametros
 public class AspiranteDto {
     private Long idAspirante;
     private String tipo_De_Documento;

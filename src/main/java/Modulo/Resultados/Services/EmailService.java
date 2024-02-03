@@ -13,11 +13,15 @@ import java.nio.charset.StandardCharsets;
 
 
 @Service
-public class EmailServiceImpl implements IMailService {
+public class EmailService implements IMailService {
     @Value("${email.sender}")
     private String emailUser;
-    @Autowired
+
     private JavaMailSender mailSender;
+    @Autowired
+    public EmailService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     @Override
     public void sendEmail(String[] toUser, String subject, String message) {

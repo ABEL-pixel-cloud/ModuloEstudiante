@@ -1,11 +1,18 @@
 package Modulo.Resultados.Dtos;
 
-public class ResponseError {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter // genera metodos getter para todos los metodos de la clase
+@Setter
+@NoArgsConstructor // genera un constructor sin argumentos
+public class ResponseErrorDto {
     private  String message;
 
     private Integer code;
 
-    public ResponseError(String message, Integer code) {
+    public ResponseErrorDto(String message, Integer code) {
         this.message = message;
         this.code = code;
     }

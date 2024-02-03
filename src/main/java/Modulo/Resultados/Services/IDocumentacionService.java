@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface DocumentacionService {
+public interface IDocumentacionService {
 
     // permite almacenar o cargar archivos a la base de datos
 

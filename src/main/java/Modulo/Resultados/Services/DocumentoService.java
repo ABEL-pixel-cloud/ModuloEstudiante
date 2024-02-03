@@ -16,10 +16,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 @Service
-public class DocumentoService implements DocumentacionService{
+public class DocumentoService implements IDocumentacionService {
     private IDocumentacionRepository documentacionRepository;
-
-
     private AspiranteService aspiranteService;
     @Autowired
     public DocumentoService(IDocumentacionRepository documentacionRepository,
@@ -27,10 +25,6 @@ public class DocumentoService implements DocumentacionService{
         this.documentacionRepository = documentacionRepository;
 
         this.aspiranteService = aspiranteService;
-    }
-
-    public DocumentoService() {
-
     }
 
 

@@ -3,14 +3,14 @@ package Modulo.Resultados.Controllers;
 
 import Modulo.Resultados.Dtos.DocumentosDto;
 import Modulo.Resultados.Dtos.EstadoDocumentosDto;
-import Modulo.Resultados.Dtos.ReciveCohortes;
+import Modulo.Resultados.Dtos.ReciveCohortesDto;
 import Modulo.Resultados.Dtos.ReciveDocumentosDto;
 import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Exceptions.ResponseMessage;
 import Modulo.Resultados.Services.CredencialesEstudiante;
 import Modulo.Resultados.Services.DocumentoService;
 import Modulo.Resultados.Services.EstudianteService;
-import Modulo.Resultados.Services.ServiceCohorte;
+import Modulo.Resultados.Services.CohorteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,12 +32,12 @@ public class DocumentosController {
     private CredencialesEstudiante aspirante;
 
     private EstudianteService estudianteService;
-    private ServiceCohorte serviceCohorte;
+    private CohorteService serviceCohorte;
     @Autowired
     public DocumentosController(DocumentoService documentoService,
                                 CredencialesEstudiante aspirante,
                                 EstudianteService estudianteService,
-                                ServiceCohorte serviceCohorte) {
+                                CohorteService serviceCohorte) {
         this.documentoService = documentoService;
         this.aspirante = aspirante;
         this.estudianteService = estudianteService;
@@ -64,7 +64,7 @@ public class DocumentosController {
         return ResponseEntity.ok(estadoDocumentacionList);
     }
     @PostMapping("/asignacionCohorte")
-    public void cohorte(@RequestBody ReciveCohortes request)  {
+    public void cohorte(@RequestBody ReciveCohortesDto request)  {
           serviceCohorte.CreacionDeCohorte(request.getIdEstudiante(),request.getCohorte());
           aspirante.enviarCredencialesEstudiante(request.getIdEstudiante());
 

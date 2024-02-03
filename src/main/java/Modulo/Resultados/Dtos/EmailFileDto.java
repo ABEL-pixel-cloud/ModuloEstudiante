@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class EmailFileDto {
 
     private String[] toUser;

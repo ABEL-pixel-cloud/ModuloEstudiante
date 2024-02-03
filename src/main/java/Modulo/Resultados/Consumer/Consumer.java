@@ -3,22 +3,27 @@ package Modulo.Resultados.Consumer;
 
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
-import Modulo.Resultados.Services.EmailServiceImpl;
+import Modulo.Resultados.Services.EmailService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.Optional;
 
 
-@Service
+@Component
 public class Consumer {
-    @Autowired
-    EmailServiceImpl service;
-    @Autowired
+
+    EmailService service;
+
     IAspiranteRepository aspiranteRepository;
+    @Autowired
+    public Consumer(EmailService service, IAspiranteRepository aspiranteRepository) {
+        this.service = service;
+        this.aspiranteRepository = aspiranteRepository;
+    }
 
     @RabbitListener(queues = {"correo"})
     public void recive(@Payload String correo) {
