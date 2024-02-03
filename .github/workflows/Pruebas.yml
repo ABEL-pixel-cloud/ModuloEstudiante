@@ -1,12 +1,13 @@
+
+name: Java CI with Maven
+
 on:
   push:
     branches:
       - main
-      - RamaPrueba
   pull_request:
     branches:
       - main
-      - RamaPrueba
 
 jobs:
   build:
