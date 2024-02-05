@@ -66,6 +66,7 @@
 		</dependency>
 
 
+
 	</dependencies>
 
 	<build>
@@ -73,6 +74,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.1.2</version> <!-- Asegúrate de usar la versión correcta -->
+				<configuration>
+					<argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+				</configuration>
 			</plugin>
 
 		</plugins>
