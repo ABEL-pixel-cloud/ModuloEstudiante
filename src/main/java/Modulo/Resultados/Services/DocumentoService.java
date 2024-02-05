@@ -30,7 +30,7 @@ public class DocumentoService implements IDocumentacionService {
 
     @Override
     public Documentacion store(MultipartFile file, MultipartFile documento, Long cedulaAspirante) throws IOException {
-        Aspirante aspirante = aspiranteService.verificarAspirantesyValidarDocumentacion(cedulaAspirante);
+        Aspirante aspirante = aspiranteService.verificarAspirantes(cedulaAspirante);
 
         // Verificar si ya existe una documentación para este aspirante
         Optional<Documentacion> documentacionExistente = documentacionRepository.findByAspirante(aspirante);

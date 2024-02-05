@@ -21,7 +21,7 @@ public class AspiranteService {
         this.aspiranteRepository = aspiranteRepository;
     }
 
-    public Aspirante verificarAspirantesyValidarDocumentacion(Long cedulaAspirante) {
+    public Aspirante verificarAspirantes(Long cedulaAspirante) {
 
         Optional<Aspirante> aspiranteExiste=aspiranteRepository.findByDocumento(cedulaAspirante);
 
