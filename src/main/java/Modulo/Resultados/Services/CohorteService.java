@@ -4,9 +4,7 @@ package Modulo.Resultados.Services;
 
 import Modulo.Resultados.Entity.Cohorte;
 import Modulo.Resultados.Entity.Estudiante;
-import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.ICohorteRepository;
-import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
