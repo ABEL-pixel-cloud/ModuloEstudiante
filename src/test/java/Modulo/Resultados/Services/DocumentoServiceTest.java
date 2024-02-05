@@ -6,12 +6,14 @@ import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.IOException;
@@ -35,6 +37,11 @@ public class DocumentoServiceTest {
     //inyectamos el mock al servicio documentacionService
     @InjectMocks
     private DocumentoService documentoService;
+
+    @Before("iniciar")
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
 
 
 
