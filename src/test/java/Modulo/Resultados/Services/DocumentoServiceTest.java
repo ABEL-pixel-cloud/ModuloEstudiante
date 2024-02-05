@@ -39,7 +39,7 @@ public class DocumentoServiceTest {
         MockMultipartFile documento = new MockMultipartFile("documento", "documento.txt", "text/plain", "documento data".getBytes());
         Aspirante aspiranteMock = new Aspirante();
 
-        when(aspiranteService.verificarAspirantes(cedulaAspirante)).thenReturn(aspiranteMock);
+        when(aspiranteService.verificarAspirantesyValidarDocumentacion(cedulaAspirante)).thenReturn(aspiranteMock);
 
         Documentacion documentacionMock = new Documentacion();
         when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));

@@ -14,8 +14,7 @@ public interface IAspiranteRepository extends JpaRepository<Aspirante,Long> {
     Optional<Aspirante> findByDocumento(Long documento);
     @Query
     Optional<Aspirante>  findByCorreo(String correo);
-    @Query
-    Optional<Aspirante>  findById(Long idaspirante);
+
 
 
 
