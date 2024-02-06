@@ -10,9 +10,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 public class DocumentoServiceTest {
@@ -50,5 +54,33 @@ public class DocumentoServiceTest {
 
         // Assert
         assertEquals(documentacionMock, resultado);
+    }
+
+    @Test
+    public void testGetfile_FileFound() throws FileNotFoundException {
+        // Arrange
+        UUID fileId = UUID.randomUUID();
+        Documentacion documentacionMock = new Documentacion();
+        when(documentacionRepository.findById(fileId)).thenReturn(Optional.of(documentacionMock));
+
+        // Act
+        Optional<Documentacion> resultado = documentoService.getfile(fileId);
+
+        // Assert
+        assertTrue(resultado.isPresent());
+        assertEquals(documentacionMock, resultado.get());
+    }
+
+
+    @Test
+    public void testGetfile_FileNotFound() {
+        // Arrange
+        UUID fileId = UUID.randomUUID();
+        when(documentacionRepository.findById(fileId)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(FileNotFoundException.class, () -> {
+            documentoService.getfile(fileId);
+        });
     }
 }
