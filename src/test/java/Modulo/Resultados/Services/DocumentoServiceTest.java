@@ -1,6 +1,7 @@
 package Modulo.Resultados.Services;
 
 import Modulo.Resultados.Dtos.DocumentosDto;
+import Modulo.Resultados.Dtos.EstadoDocumentosDto;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
@@ -17,13 +18,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class DocumentoServiceTest {
 
@@ -53,7 +52,7 @@ public class DocumentoServiceTest {
 
         Documentacion documentacionMock = new Documentacion();
         when(documentacionRepository.findByAspirante(aspiranteMock)).thenReturn(Optional.of(documentacionMock));
-        when(documentacionRepository.save(ArgumentMatchers.any(Documentacion.class))).thenReturn(documentacionMock);
+        when(documentacionRepository.save(any(Documentacion.class))).thenReturn(documentacionMock);
 
         // Act
         Documentacion resultado = documentoService.store(file, documento, cedulaAspirante);
@@ -122,4 +121,33 @@ public class DocumentoServiceTest {
         assertEquals(documentacionList.size(), result.size());
         // Puedes agregar más aserciones según tus necesidades específicas
     }
+    @Test
+    public void testEstadoDocumentacion() {
+        // Arrange
+        // Crear una lista de aspirantes para probar
+        List<Aspirante> aspirantes = new ArrayList<>();
+        Aspirante aspirante1 = new Aspirante();
+        aspirante1.setIdaspirante(1L); // Definir un ID para el primer aspirante
+        aspirantes.add(aspirante1);
+
+        // Crear una documentación para el primer aspirante
+        Documentacion documentacion = new Documentacion();
+        documentacion.setEstadoDocumentos(false); // Estado inicial de los documentos
+
+        // Mockear el comportamiento del repositorio para devolver la documentación cuando se busque por el aspirante
+        when(documentacionRepository.findByAspirante(any(Aspirante.class))).thenReturn(Optional.of(documentacion));
+
+        // Act
+        List<EstadoDocumentosDto> estadoDocumentacionList = documentoService.estadoDocumentacion(aspirantes, true);
+
+        // Assert
+        // Verificar que la lista de DTOs no esté vacía
+        assertFalse(estadoDocumentacionList.isEmpty());
+
+        // Verificar que la documentación se haya actualizado con el nuevo estado
+        verify(documentacionRepository, times(1)).save(any(Documentacion.class));
+
+        // Puedes agregar más aserciones según tus necesidades específicas
+    }
+
 }
