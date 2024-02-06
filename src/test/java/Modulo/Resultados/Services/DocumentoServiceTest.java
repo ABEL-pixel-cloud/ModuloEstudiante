@@ -96,8 +96,12 @@ public class DocumentoServiceTest {
         // Arrange
         Documentacion documentacion1 = new Documentacion();
         documentacion1.setDataDocumentoActa(new byte[]{});
+        documentacion1.setDataDocumentoCedula(new byte[]{});
+
         Documentacion documentacion2 = new Documentacion();
         documentacion2.setDataDocumentoActa(new byte[]{});
+        documentacion2.setDataDocumentoCedula(new byte[]{});
+
         List<Documentacion> documentacionList = Arrays.asList(documentacion1, documentacion2);
 
         when(documentacionRepository.findAll()).thenReturn(documentacionList);
