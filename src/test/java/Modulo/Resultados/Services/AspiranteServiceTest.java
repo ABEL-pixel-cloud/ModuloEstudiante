@@ -3,7 +3,7 @@ package Modulo.Resultados.Services;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
