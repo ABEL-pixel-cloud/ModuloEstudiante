@@ -135,7 +135,7 @@ public class DocumentoService implements IDocumentacionService {
 
             // Construir un objeto DocumentosDto con la información del archivo
             return DocumentosDto.builder()
-                    .id(dbFile.getAspirante().getIdaspirante())
+                    .id(dbFile.getAspirante() != null ? dbFile.getAspirante().getIdaspirante() : null)
                     .nombreacta(dbFile.getDocumentoActa())
                     .urlacta(urlActa)
                     .tipoDocumentoacta(dbFile.getTipoDocumentoacta())
