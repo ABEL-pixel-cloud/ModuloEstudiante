@@ -54,7 +54,6 @@ public class CredencialesEstudianteTest {
 
         Aspirante aspirante = new Aspirante();
         aspirante.setIdaspirante(1L);
-        aspirante.setCorreo("example@example.com");
         aspirante.setPrograma("Desarrollo Back-End");
 
         Cohorte cohorte = new Cohorte();
