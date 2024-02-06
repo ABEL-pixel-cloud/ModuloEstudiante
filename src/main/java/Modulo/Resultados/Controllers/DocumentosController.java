@@ -65,7 +65,7 @@ public class DocumentosController {
     }
     @PostMapping("/asignacionCohorte")
     public void cohorte(@RequestBody ReciveCohortesDto request)  {
-          serviceCohorte.CreacionDeCohorte(request.getIdEstudiante(),request.getCohorte());
+          serviceCohorte.creacionDeCohorte(request.getIdEstudiante(),request.getCohorte());
           aspirante.enviarCredencialesEstudiante(request.getIdEstudiante());
 
     }

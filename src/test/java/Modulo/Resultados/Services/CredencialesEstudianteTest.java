@@ -6,11 +6,15 @@ import Modulo.Resultados.Entity.Estudiante;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +37,17 @@ public class CredencialesEstudianteTest {
 
     @Mock
     private IEstudianteRepository estudianteRepository;
-
+    @InjectMocks
     private CredencialesEstudiante credencialesEstudiante;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         MockitoAnnotations.openMocks(this);
         credencialesEstudiante = new CredencialesEstudiante(documentacionRepository, emailService, aspiranteRepository, estudianteRepository);
     }
 
     @Test
-    void testEnviarCredencialesEstudiante() {
+    public void testEnviarCredencialesEstudiante() {
         // Arrange
         Estudiante estudiante = new Estudiante();
         estudiante.setIdEstudiante(1L);

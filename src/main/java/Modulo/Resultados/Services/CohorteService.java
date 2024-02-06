@@ -27,27 +27,40 @@ public class CohorteService {
     }
 
 
-    public void CreacionDeCohorte(List<Estudiante> estudiantes, String cohorte) {
+    public void creacionDeCohorte(List<Estudiante> estudiantes, String cohorte) {
+
+        /*
 
         Cohorte cohorteObjeto = Cohorte.builder()
                 .cohorte(cohorte)
                 .build();
+
+         */
+        Cohorte cohorteObjeto = new Cohorte(); // Crear una instancia de Cohorte
+
+        // Establecer los valores del cohorte
+        cohorteObjeto.setCohorte(cohorte);
+
         cohorteRepository.save(cohorteObjeto);
 
         // Itera sobre la lista de estudiantes
         for (Estudiante estudiante : estudiantes) {
             // Obtén el ID del estudiante actual
             Long idEstudiante = estudiante.getIdEstudiante();
+            if (idEstudiante != null) {
 
-            // Busca el estudiante en el repositorio
-            Optional<Estudiante> estudianteEncontrado = estudianteRepository.findById(idEstudiante);
+                // Busca el estudiante en el repositorio
+                Optional<Estudiante> estudianteEncontrado = estudianteRepository.findById(idEstudiante);
 
-            // Si el estudiante se encuentra en la base de datos
-            if (estudianteEncontrado.isPresent()) {
-                // Asigna la cohorte al estudiante y guarda el cambio
-                Estudiante estudianteActualizado = estudianteEncontrado.get();
-                estudianteActualizado.setCohorte(cohorteObjeto);
-                estudianteRepository.save(estudianteActualizado);
+                // Si el estudiante se encuentra en la base de datos
+                if (estudianteEncontrado.isPresent()) {
+                    // Asigna la cohorte al estudiante y guarda el cambio
+                    Estudiante estudianteActualizado = estudianteEncontrado.get();
+                    estudianteActualizado.setCohorte(cohorteObjeto);
+                    estudianteRepository.save(estudianteActualizado);
+                }
+            }else {
+                throw new IllegalArgumentException("El ID del estudiante no puede ser null.");
             }
         }
     }

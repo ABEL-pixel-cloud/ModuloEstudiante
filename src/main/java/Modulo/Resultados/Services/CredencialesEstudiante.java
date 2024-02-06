@@ -3,13 +3,12 @@ package Modulo.Resultados.Services;
 
 
 
-import Modulo.Resultados.Entity.Aspirante;
-import Modulo.Resultados.Entity.Documentacion;
+
 import Modulo.Resultados.Entity.Estudiante;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
-import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
