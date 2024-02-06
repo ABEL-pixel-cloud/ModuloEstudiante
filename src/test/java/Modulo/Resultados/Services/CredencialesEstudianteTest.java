@@ -68,7 +68,8 @@ public class CredencialesEstudianteTest {
 
         when(estudianteRepository.findByidEstudiante(1L)).thenReturn(Optional.of(estudiante));
 
-
+        // Act
+        credencialesEstudiante.enviarCredencialesEstudiante(estudiantes);
 
         // Assert
         ArgumentCaptor<String[]> emailCaptor = ArgumentCaptor.forClass(String[].class);
