@@ -133,6 +133,8 @@ public class DocumentoService implements IDocumentacionService {
              */
 
 
+
+            // se hicieron correciones en id, nombre aspirante y cedulaaspirante
             // Construir un objeto DocumentosDto con la información del archivo
             return DocumentosDto.builder()
                     .id(dbFile.getAspirante() != null ? dbFile.getAspirante().getIdaspirante() : null)
