@@ -146,8 +146,8 @@ public class DocumentoService implements IDocumentacionService {
                     .tipoDocumentocedula(dbFile.getTipoDocumentocedula())
                     .tamanodocumentocedula(Long.valueOf((dbFile.getDataDocumentoCedula().length)))
 
-                    .nombreAspirante((dbFile.getNombreAspirante()))
-                    .cedulaAspirante(dbFile.getCedulaAspirante())
+                    .nombreAspirante((dbFile.getAspirante() != null ? dbFile.getAspirante().getNombresCompletos() : null))
+                    .cedulaAspirante((dbFile.getAspirante() != null ? dbFile.getAspirante().getDocumento() : null))
                     .build();
 
         }).collect(Collectors.toList());
