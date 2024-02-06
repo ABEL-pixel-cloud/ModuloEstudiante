@@ -7,6 +7,7 @@ import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import org.junit.Before;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -39,7 +40,7 @@ public class DocumentoServiceTest {
     @InjectMocks
     private DocumentoService documentoService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }

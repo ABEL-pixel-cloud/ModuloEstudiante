@@ -7,6 +7,7 @@ import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
@@ -36,7 +37,7 @@ public class CredencialesEstudianteTest {
     @InjectMocks
     private CredencialesEstudiante credencialesEstudiante;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         credencialesEstudiante = new CredencialesEstudiante(documentacionRepository, emailService, aspiranteRepository, estudianteRepository);
