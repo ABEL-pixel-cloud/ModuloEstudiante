@@ -119,15 +119,15 @@ public class DocumentoServiceTest {
 
         // Assert
         assertEquals(documentacionList.size(), result.size());
-        // Puedes agregar más aserciones según tus necesidades específicas
+
     }
     @Test
     public void testEstadoDocumentacion() {
         // Arrange
-        // Crear una lista de aspirantes para probar
+        // se Crea una lista de aspirantes para probar
         List<Aspirante> aspirantes = new ArrayList<>();
         Aspirante aspirante1 = new Aspirante();
-        aspirante1.setIdaspirante(1L); // Definir un ID para el primer aspirante
+        aspirante1.setIdaspirante(1L); // Definir un ID para el primer aspirante de tipo long con 1l
         aspirantes.add(aspirante1);
 
         // Crear una documentación para el primer aspirante
@@ -135,6 +135,7 @@ public class DocumentoServiceTest {
         documentacion.setEstadoDocumentos(false); // Estado inicial de los documentos
 
         // Mockear el comportamiento del repositorio para devolver la documentación cuando se busque por el aspirante
+        //(any(Aspirante.class) no importa queinstancia espesifica se pase al metodo
         when(documentacionRepository.findByAspirante(any(Aspirante.class))).thenReturn(Optional.of(documentacion));
 
         // Act
@@ -147,7 +148,7 @@ public class DocumentoServiceTest {
         // Verificar que la documentación se haya actualizado con el nuevo estado
         verify(documentacionRepository, times(1)).save(any(Documentacion.class));
 
-        // Puedes agregar más aserciones según tus necesidades específicas
+
     }
 
 }
