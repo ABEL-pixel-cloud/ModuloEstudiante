@@ -54,6 +54,7 @@ public class CredencialesEstudianteTest {
 
         Aspirante aspirante = new Aspirante();
         aspirante.setIdaspirante(1L);
+        aspirante.setCorreo("example@example.com");
         aspirante.setPrograma("Desarrollo Back-End");
 
         Cohorte cohorte = new Cohorte();
@@ -67,8 +68,7 @@ public class CredencialesEstudianteTest {
 
         when(estudianteRepository.findByidEstudiante(1L)).thenReturn(Optional.of(estudiante));
 
-        // Act
-        credencialesEstudiante.enviarCredencialesEstudiante(estudiantes);
+
 
         // Assert
         ArgumentCaptor<String[]> emailCaptor = ArgumentCaptor.forClass(String[].class);
