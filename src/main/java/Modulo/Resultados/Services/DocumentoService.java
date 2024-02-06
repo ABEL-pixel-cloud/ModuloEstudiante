@@ -100,17 +100,39 @@ public class DocumentoService implements IDocumentacionService {
     public List<DocumentosDto> getAllFiles() {
         // Mapear la lista de registros a una lista de objetos DocumentosDto
         List<DocumentosDto> files = documentacionRepository.findAll().stream().map(dbFile -> {
-
+            /*
             // Construir la URL para descargar el archivo usando Spring ServletUriComponentsBuilder
             String urlActa = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("api/documentos/acta/")
                     .path(dbFile.getIddocumentacion().toString())
                     .toUriString();
 
+             */
+            String urlActa = null;
+            if (dbFile.getIddocumentacion() != null) {
+                urlActa = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("api/documentos/acta/")
+                        .path(dbFile.getIddocumentacion().toString())
+                        .toUriString();
+            }
+
+            String urldocumento = null;
+            if (dbFile.getIddocumentacion() != null) {
+                urldocumento = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("api/documentos/cedula/")
+                        .path(dbFile.getIddocumentacion().toString())
+                        .toUriString();
+            }
+            /*
+
             String urldocumento = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("api/documentos/cedula/")
                     .path(dbFile.getIddocumentacion().toString())
                     .toUriString();
+
+             */
+
+
             // Construir un objeto DocumentosDto con la información del archivo
             return DocumentosDto.builder()
                     .id(dbFile.getAspirante().getIdaspirante())
