@@ -47,7 +47,7 @@ public class DocumentoServiceTest {
         Long cedulaAspirante = 12345L;
         MockMultipartFile file = new MockMultipartFile("file", "test.txt", "text/plain", "test data".getBytes());
         MockMultipartFile documento = new MockMultipartFile("documento", "documento.txt", "text/plain", "documento data".getBytes());
-        Aspirante aspiranteMock = new Aspirante();
+        //Aspirante aspiranteMock = new Aspirante();
 
         when(aspiranteService.verificarAspirantesyValidarDocumentacion(cedulaAspirante)).thenReturn(aspiranteMock);
 
