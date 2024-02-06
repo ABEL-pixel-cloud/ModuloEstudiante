@@ -47,7 +47,7 @@ public class DocumentoServiceTest {
         Long cedulaAspirante = 12345L;
         MockMultipartFile file = new MockMultipartFile("file", "test.txt", "text/plain", "test data".getBytes());
         MockMultipartFile documento = new MockMultipartFile("documento", "documento.txt", "text/plain", "documento data".getBytes());
-        //Aspirante aspiranteMock = new Aspirante();
+        Aspirante aspiranteMock = new Aspirante();
 
         when(aspiranteService.verificarAspirantesyValidarDocumentacion(cedulaAspirante)).thenReturn(aspiranteMock);
 
@@ -97,12 +97,11 @@ public class DocumentoServiceTest {
         // asignando arreglos vacíos (new byte[]{}) a los campos dataDocumentoActa y dataDocumentoCedula de esa instancia.
         Documentacion documentacion1 = new Documentacion();
         documentacion1.setDataDocumentoActa(new byte[]{});
-        documentacion1.setDataDocumentoCedula(new byte[]{});
 
         // asignando arreglos vacíos (new byte[]{}) a los campos dataDocumentoActa y dataDocumentoCedula de esa instancia.
         Documentacion documentacion2 = new Documentacion();
         documentacion2.setDataDocumentoActa(new byte[]{});
-        documentacion2.setDataDocumentoCedula(new byte[]{});
+
 
         //Esta lista contiene las instancias documentacion1 y documentacion2 que se crearon previamente.
         List<Documentacion> documentacionList = Arrays.asList(documentacion1, documentacion2);
