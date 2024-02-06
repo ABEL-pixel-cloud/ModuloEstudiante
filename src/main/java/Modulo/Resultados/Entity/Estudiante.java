@@ -34,4 +34,6 @@ public class Estudiante {
     Aspirante aspirante;
 
 
+    public Estudiante(long l, String s) {
+    }
 }

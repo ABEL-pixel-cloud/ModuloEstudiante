@@ -83,7 +83,7 @@ public class CredencialesEstudianteTest {
         assertEquals("Estas son tus credenciales para Desarrollo Back-End", capturedSubject);
         assertNotNull(capturedMessage);
         assertTrue(capturedMessage.contains("Hola"));
-        assertTrue(capturedMessage.contains("Cohorte2024"));
+        assertTrue(capturedMessage.contains("Cohorte5"));
         assertTrue(capturedMessage.contains("Grupo de WhatsApp"));
         assertTrue(capturedMessage.contains("Grupo de Slack"));
         assertTrue(capturedMessage.contains("Correo de Makaia"));

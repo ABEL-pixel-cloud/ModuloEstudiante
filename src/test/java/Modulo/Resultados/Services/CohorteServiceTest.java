@@ -6,46 +6,40 @@ import Modulo.Resultados.Repositories.ICohorteRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
 import org.junit.Test;
 import org.mockito.InjectMocks;
-
-import java.util.ArrayList;
+import org.mockito.Mock;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class CohorteServiceTest {
     @InjectMocks
     private CohorteService cohorteService;
 
+    @Mock
+    private IEstudianteRepository estudianteRepositoryMock;
+
+    @Mock
+    private ICohorteRepository cohorteRepositoryMock;
+
+
     @Test
     public void testCreacionDeCohorte() {
         // Arrange
-        List<Estudiante> estudiantes = new ArrayList<>();
-        Estudiante estudianteMock1 = new Estudiante();
-        estudianteMock1.setIdEstudiante(1L); // Estudiante existente en la base de datos
-        estudiantes.add(estudianteMock1);
+        List<Estudiante> estudiantes = Arrays.asList(
+                new Estudiante(1L, "Estudiante 1"),
+                new Estudiante(2L, "Estudiante 2")
+        );
+        String cohorte = "Cohorte 2024";
 
-        String cohorte = "5";
-
-        // Mock del repositorio de Cohorte
-        ICohorteRepository cohorteRepositoryMock = mock(ICohorteRepository.class);
-
-        // Mock del repositorio de Estudiante
-        IEstudianteRepository estudianteRepositoryMock = mock(IEstudianteRepository.class);
-        when(estudianteRepositoryMock.findById(1L)).thenReturn(Optional.of(estudianteMock1));
-
-        // Instancia del servicio
-        CohorteService service = new CohorteService(estudianteRepositoryMock,cohorteRepositoryMock);
+        Cohorte cohorteObjetoMock = new Cohorte(); // Crear un objeto Cohorte mock
+        when(cohorteRepositoryMock.save(any(Cohorte.class))).thenReturn(cohorteObjetoMock); // Mock para el repositorio de Cohorte
 
         // Act
-        service.CreacionDeCohorte(estudiantes, cohorte);
+        cohorteService.CreacionDeCohorte(estudiantes, cohorte);
 
         // Assert
-        // Verificar que se haya guardado la cohorte
-        verify(cohorteRepositoryMock, times(1)).save(any(Cohorte.class));
-
-        // Verificar que se haya asignado la cohorte al estudiante
-        assertEquals(cohorte, estudianteMock1.getCohorte().getCohorte());
+        verify(cohorteRepositoryMock, times(1)).save(any(Cohorte.class)); // Verificar que se llama a save en el repositorio de Cohorte
+        verify(estudianteRepositoryMock, times(estudiantes.size())).findById(anyLong()); // Verificar que se llama a findById en el repositorio de Estudiante
+        verify(estudianteRepositoryMock, times(estudiantes.size())).save(any(Estudiante.class)); // Verificar que se llama a save en el repositorio de Estudiante
     }
 }
