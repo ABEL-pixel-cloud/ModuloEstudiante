@@ -32,8 +32,6 @@ public class CohorteService {
         Cohorte cohorteObjeto = Cohorte.builder()
                 .cohorte(cohorte)
                 .build();
-
-
         cohorteRepository.save(cohorteObjeto);
 
         // Itera sobre la lista de estudiantes

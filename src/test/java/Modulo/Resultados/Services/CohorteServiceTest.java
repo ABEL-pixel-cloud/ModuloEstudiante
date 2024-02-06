@@ -5,6 +5,7 @@ import Modulo.Resultados.Entity.Estudiante;
 import Modulo.Resultados.Repositories.ICohorteRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class CohorteServiceTest {
-
+    @InjectMocks
     private CohorteService cohorteService;
 
     @Test
@@ -25,7 +26,7 @@ public class CohorteServiceTest {
         estudianteMock1.setIdEstudiante(1L); // Estudiante existente en la base de datos
         estudiantes.add(estudianteMock1);
 
-        String cohorte = "Cohorte2024";
+        String cohorte = "5";
 
         // Mock del repositorio de Cohorte
         ICohorteRepository cohorteRepositoryMock = mock(ICohorteRepository.class);

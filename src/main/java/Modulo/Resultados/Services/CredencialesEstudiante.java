@@ -19,8 +19,6 @@ import java.util.Optional;
 @Service
 public class CredencialesEstudiante {
 
-
-
     private IDocumentacionRepository documentacionRepository;
     private EmailService emailService;
 
@@ -36,43 +34,6 @@ public class CredencialesEstudiante {
         this.emailService = emailService;
         this.aspiranteRepository = aspiranteRepository;
         this.estudianteRepository = estudianteRepository;
-    }
-
-
-
-
-    public void enviarCredenciales(List<Aspirante> idaspirantes) {
-
-        for (Aspirante aspirante : idaspirantes) {
-            // Obtener el ID del aspirante actual
-            Long idAspirante = aspirante.getIdaspirante();
-
-            // Buscar el aspirante en la base de datos por su ID
-            Optional<Aspirante> aspiranteOptional = aspiranteRepository.findById(idAspirante);
-
-            // Verificar si el aspirante existe
-            if (aspiranteOptional.isPresent()) {
-                Aspirante aspiranteEncontrado = aspiranteOptional.get();
-
-                // Verificar si el correo del aspirante no es nulo
-                if (aspiranteEncontrado.getCorreo() != null) {
-                    Optional<Documentacion> documentacion = documentacionRepository.findByAspirante(aspirante);
-                    if (documentacion.isPresent() && documentacion.get().getEstadoDocumentos()) {
-                        String email=aspiranteEncontrado.getCorreo();
-                        // Enviar correo electrónico con las credenciales
-                        emailService.sendEmail(new String[]{email}, "Estas son tus credenciales", "SGJSGJAHDKSAD");
-                        System.out.println("enviar correo");
-
-                    }else {
-                        throw new RuntimeException("no se puede enviar el correo");
-                    }
-                } else {
-                    throw new RuntimeException("La dirección de correo electrónico del aspirante es nula");
-                }
-            } else {
-                throw new EntityNotFoundException("No se encontró el aspirante con ID: " + idAspirante);
-            }
-        }
     }
 
     public void enviarCredencialesEstudiante(List<Estudiante> estudiantes) {
