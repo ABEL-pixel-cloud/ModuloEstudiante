@@ -6,7 +6,6 @@ import Modulo.Resultados.Entity.Estudiante;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

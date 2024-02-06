@@ -5,8 +5,6 @@ import Modulo.Resultados.Dtos.EstadoDocumentosDto;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
-import org.junit.Before;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,7 +22,7 @@ import java.util.*;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
