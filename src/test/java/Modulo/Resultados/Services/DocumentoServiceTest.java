@@ -94,20 +94,25 @@ public class DocumentoServiceTest {
     @Test
     public void testGetAllFiles() {
         // Arrange
+        // asignando arreglos vacíos (new byte[]{}) a los campos dataDocumentoActa y dataDocumentoCedula de esa instancia.
         Documentacion documentacion1 = new Documentacion();
         documentacion1.setDataDocumentoActa(new byte[]{});
         documentacion1.setDataDocumentoCedula(new byte[]{});
 
+        // asignando arreglos vacíos (new byte[]{}) a los campos dataDocumentoActa y dataDocumentoCedula de esa instancia.
         Documentacion documentacion2 = new Documentacion();
         documentacion2.setDataDocumentoActa(new byte[]{});
         documentacion2.setDataDocumentoCedula(new byte[]{});
 
+        //Esta lista contiene las instancias documentacion1 y documentacion2 que se crearon previamente.
         List<Documentacion> documentacionList = Arrays.asList(documentacion1, documentacion2);
 
         when(documentacionRepository.findAll()).thenReturn(documentacionList);
 
         // Mock para simular la solicitud HTTP
+        //  MockHttpServletRequest Permite establecer y recuperar diversos parámetros y atributos de solicitud
         MockHttpServletRequest request = new MockHttpServletRequest();
+        // RequestContextHolder Permite almacenar y recuperar el contexto de la solicitud actual en un hilo de ejecución.
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
         // Act

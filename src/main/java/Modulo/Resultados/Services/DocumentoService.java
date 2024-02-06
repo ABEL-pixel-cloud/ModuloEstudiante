@@ -137,7 +137,7 @@ public class DocumentoService implements IDocumentacionService {
             // se hicieron correciones en id, nombre aspirante y cedulaaspirante
             // Construir un objeto DocumentosDto con la información del archivo
             return DocumentosDto.builder()
-                    .id(dbFile.getAspirante() != null ? dbFile.getAspirante().getIdaspirante() : null)
+                    .id(dbFile.getAspirante().getIdaspirante())
                     .nombreacta(dbFile.getDocumentoActa())
                     .urlacta(urlActa)
                     .tipoDocumentoacta(dbFile.getTipoDocumentoacta())
@@ -148,8 +148,8 @@ public class DocumentoService implements IDocumentacionService {
                     .tipoDocumentocedula(dbFile.getTipoDocumentocedula())
                     .tamanodocumentocedula(Long.valueOf((dbFile.getDataDocumentoCedula().length)))
 
-                    .nombreAspirante((dbFile.getAspirante() != null ? dbFile.getAspirante().getNombresCompletos() : null))
-                    .cedulaAspirante((dbFile.getAspirante() != null ? dbFile.getAspirante().getDocumento() : null))
+                    .nombreAspirante((dbFile.getNombreAspirante()))
+                    .cedulaAspirante(dbFile.getCedulaAspirante())
                     .build();
 
         }).collect(Collectors.toList());
