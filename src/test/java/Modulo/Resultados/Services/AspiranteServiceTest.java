@@ -2,12 +2,11 @@ package Modulo.Resultados.Services;
 
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
@@ -15,14 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-public class AspiranteServiceDto {
+
+public class AspiranteServiceTest {
     @Mock
     private IAspiranteRepository aspiranteRepository;
 
     @InjectMocks
     private AspiranteService aspiranteService;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
