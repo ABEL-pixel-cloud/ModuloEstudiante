@@ -1,5 +1,6 @@
 package Modulo.Resultados.Services;
 
+import Modulo.Resultados.Dtos.DocumentosDto;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
@@ -9,10 +10,15 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -82,5 +88,27 @@ public class DocumentoServiceTest {
         assertThrows(FileNotFoundException.class, () -> {
             documentoService.getfile(fileId);
         });
+    }
+
+
+    @Test
+    public void testGetAllFiles() {
+        // Arrange
+        Documentacion documentacion1 = new Documentacion();
+        Documentacion documentacion2 = new Documentacion();
+        List<Documentacion> documentacionList = Arrays.asList(documentacion1, documentacion2);
+
+        when(documentacionRepository.findAll()).thenReturn(documentacionList);
+
+        // Mock para simular la solicitud HTTP
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+
+        // Act
+        List<DocumentosDto> result = documentoService.getAllFiles();
+
+        // Assert
+        assertEquals(documentacionList.size(), result.size());
+        // Puedes agregar más aserciones según tus necesidades específicas
     }
 }
