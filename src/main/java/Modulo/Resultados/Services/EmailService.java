@@ -1,6 +1,7 @@
 package Modulo.Resultados.Services;
 
 
+
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ public class EmailService implements IMailService {
     @Autowired
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
+
     }
 
     @Override
@@ -30,14 +32,17 @@ public class EmailService implements IMailService {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
+            /*
             mimeMessageHelper.setFrom(emailUser);
+
+             */
             mimeMessageHelper.setTo(toUser);
             mimeMessageHelper.setSubject(subject);
             mimeMessageHelper.setText(message, true); // Set true to indicate HTML content
 
             mailSender.send(mimeMessage);
-        } catch (Exception e) {
-            throw new RuntimeException("Error sending email", e);
+        } catch (jakarta.mail.MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -50,8 +55,10 @@ public class EmailService implements IMailService {
         try {
             MimeMessage mimeMessage=mailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper=new MimeMessageHelper(mimeMessage,true, StandardCharsets.UTF_8.name());
-
+            /*
             mimeMessageHelper.setFrom(emailUser);
+
+             */
             mimeMessageHelper.setTo(toUser);
             mimeMessageHelper.setSubject(subject);
             mimeMessageHelper.setText(message,true);

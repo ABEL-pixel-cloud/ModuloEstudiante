@@ -1,5 +1,7 @@
 package Modulo.Resultados.Services;
 
+
+import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,12 +10,16 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mail.javamail.JavaMailSender;
 
+
+
 import java.io.File;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
+
+import static org.mockito.Mockito.*;
+
 
 public class EmailServiceTest {
+
     @Mock
     private JavaMailSender mailSender;
 
@@ -25,32 +31,39 @@ public class EmailServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
+
     @Test
-    public void testSendEmail() {
+    public void sendEmail_SuccessfullySendsEmail() throws Exception {
         // Arrange
-        String[] toUser = {"recipient@example.com"};
+        String[] toUser = {"labelardo477@gmail.com"};
         String subject = "Test Subject";
         String message = "Test Message";
+
+        MimeMessage mimeMessage = mock(MimeMessage.class);
+        when(mailSender.createMimeMessage()).thenReturn(mimeMessage);
 
         // Act
         emailService.sendEmail(toUser, subject, message);
 
         // Assert
-        verify(mailSender).send(any(MimeMessage.class)); // Verifica que el método send del mailSender haya sido llamado
+        verify(mailSender).send(mimeMessage);
     }
 
     @Test
-    public void testSendEmailWithFile() {
+    public void sendEmailWithFile_shouldSendEmailWithAttachment() throws MessagingException {
         // Arrange
-        String[] toUser = {"recipient@example.com"};
+        String[] toUser = {"klondolo8@gmail.com"};
         String subject = "Test Subject";
         String message = "Test Message";
-        File file = new File("D:\\Desktop\\ModuloResultados\\Resultados\\src\\main\\resources\\File\\ACTADE COMPROMISO.pdf");
+        File file = new File("test.txt");
+
+        MimeMessage mimeMessage = mock(MimeMessage.class);
+        when(mailSender.createMimeMessage()).thenReturn(mimeMessage);
 
         // Act
         emailService.sendEmailWithFile(toUser, subject, message, file);
 
         // Assert
-        verify(mailSender).send(any(MimeMessage.class)); // Verifica que el método send del mailSender haya sido llamado
+        verify(mailSender).send(mimeMessage);
     }
 }
