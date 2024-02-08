@@ -35,7 +35,7 @@ public class AspiranteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarUsuario(@PathVariable Aspirante id){
+    public ResponseEntity<String> eliminarUsuario(@PathVariable Long id){
         return this.service.eliminar(id);
     }
 }

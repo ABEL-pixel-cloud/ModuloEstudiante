@@ -79,12 +79,20 @@ public class CrearAspiranteService {
 
 
     // se crea este metodo para eliminar por id el Aspirante
-    public ResponseEntity<String> eliminar(Aspirante id) {
-        Aspirante aspirante = this.aspiranteRepository.findById(id.getIdaspirante())
+    public ResponseEntity<String> eliminar(Long id) {
+
+        Aspirante aspirante = this.aspiranteRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("el aspirante no existe"));
 
-        this.aspiranteRepository.delete(aspirante);
-        return new ResponseEntity<>("aspirante eliminado correctamente", HttpStatus.OK);
+        // Obtener el ID del aspirante
+        Long idAspiranteActual = aspirante.getIdaspirante();
+
+        // Eliminar el aspirante de la base de datos
+        aspiranteRepository.delete(aspirante);
+
+        // Devolver una respuesta exitosa
+        return ResponseEntity.ok("Aspirante eliminado correctamente");
+
     }
 
 
