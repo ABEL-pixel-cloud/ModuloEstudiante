@@ -1,15 +1,13 @@
 package Modulo.Resultados.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name="aspirante")
+@Setter
 public class Aspirante  {
 
     @Id
@@ -142,6 +140,8 @@ public class Aspirante  {
     public Estudiante getEstudiante() {
         return estudiante;
     }
+
+
 
     @OneToOne(mappedBy = "aspirante",cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
