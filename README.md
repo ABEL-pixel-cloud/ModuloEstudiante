@@ -112,9 +112,9 @@ se ha creado el aspirante
 </code></pre>
 
 <h3>Enpoint para listar aspirantes </h3>
-<p>Sin parámetros de entrada.<p><br>
-<p>Ejemplo de solicitud:<p><br>
-<p>La API devolverá los aspirantes encontrados en formato JSON:<p><br>
+<p>Sin parámetros de entrada.<p>
+<p>Ejemplo de solicitud:<p>
+<p>La API devolverá los aspirantes encontrados en formato JSON:<p>
 
  <p>'http://localhost:8080/v1/Aspirante/Listar-Aspirante'<p>
 
