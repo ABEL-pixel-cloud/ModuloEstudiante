@@ -13,7 +13,7 @@ acceder al entrenamiento, y simultáneamente asigna al aspirante a una cohorte e
 finalización de este proceso, se concluye la admisión al Bootcamp Betek
 </p>
 
-<h2 align=center >Tecnologías Utilizadas: </h2>
+<h2>Tecnologías Utilizadas: </h2>
 <p>
 Java 17<br>
 Spring Boot 3.2.2<br>
@@ -26,7 +26,7 @@ Despliegue con Railway<br>
 
 
 
-<h2 align=center >Dependencias Utilizadas: </h2>
+<h2>Dependencias Utilizadas: </h2>
 <p>
 Spring for RabbitMQ<br>
 Spring Data JPA<br>
