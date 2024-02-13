@@ -83,23 +83,38 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 </ul>
 
 <h3>Ejemplo de la solicitud: </h3>
-<img
+<pre><code>
 {
-  "tipo_De_Documento": "string",
-  "documento": 0,
-  "nombres_Completos": "string",
-  "telefono": 0,
-  "correo": "string",
-  "tipo_De_Perfil": "string",
-  "estado_De_Proceso": "string",
-  "resultado_Prueba_Gorilla": 0,
-  "link_De_Prueba": "string",
-  "admitido": true,
-  "financiador": "string",
-  "programa": "string",
-  "observacion": "string"
+ "entrenamiento": 1,
+    "nombre": "Fabian",
+    "tipo_doc": 1,
+    "numero_documento":1234,
+    "genero": 2,
+    "edad": 24,
+    "fecha_nacimiento": "1999-06-09",
+    "celular": 321,
+    "email": "ex@example.com",
+    "nacionalidad": "Colombia",
+    "departamento": "Boyacá",
+    "ciudad": "Cucaita",
+    "direccion":"cll 7",
+    "estrato": 1,
+    "grupo_etnico_id":1,
+    "discapacidad_id":1,
+    "poblacion_id_id":6,
+    "nivel_educacion_id":5,
+    "ocupacion_id":1,
+    "ultimo_titulo":"Tec",
+    "ocupacion_si":"",
+    "salario_actual_id":1,
+    "tiempo_libre":"Estudiando",
+    "persona_emergencia":"Edisson",
+    "contacto_emergencia":311,
+    "email_emergencia":"ex@example.com",
+    "bootcamp_info_id":3,
+    "organizacion":""
 }
->
+</code></pre>
 
 <h3>La API devuleve un mensaje notificando que se ha creado el aspirante: </h3>
 
