@@ -51,5 +51,5 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 
 <h2>Diagrama Entidad Relación</h2>
 
-<img src="[ruta_de_la_imagen.jpg" alt="Descripción de la imagen](https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/DiagramaBaseDeDatos.PNG)https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/DiagramaBaseDeDatos.PNG">" alt="Diagrama entidad relacion">
+<img src="https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/DiagramaBaseDeDatos.PNG" alt="Diagrama entidad relacion">
 
