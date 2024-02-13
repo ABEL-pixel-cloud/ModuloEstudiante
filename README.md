@@ -83,8 +83,21 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 </ul>
 
 <h3>Ejemplo de la solicitud: </h3>
-
-![crearUsuario](https://github.com/ABEL-pixel-cloud/ModuloResultados/assets/138513761/255ae0c8-825d-40c9-988e-ce007bac3a48)
+{
+  "tipo_De_Documento": "string",
+  "documento": 0,
+  "nombres_Completos": "string",
+  "telefono": 0,
+  "correo": "string",
+  "tipo_De_Perfil": "string",
+  "estado_De_Proceso": "string",
+  "resultado_Prueba_Gorilla": 0,
+  "link_De_Prueba": "string",
+  "admitido": true,
+  "financiador": "string",
+  "programa": "string",
+  "observacion": "string"
+}
 
 <h3>La API devuleve un mensaje notificando que se ha creado el aspirante: </h3>
 
