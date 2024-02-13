@@ -23,7 +23,8 @@ public class Estudiante {
     private String programa;
 
 
-
+    public Estudiante(long l, String s) {
+    }
 
 
     @ManyToOne
@@ -34,6 +35,5 @@ public class Estudiante {
     Aspirante aspirante;
 
 
-    public Estudiante(long l, String s) {
-    }
+
 }

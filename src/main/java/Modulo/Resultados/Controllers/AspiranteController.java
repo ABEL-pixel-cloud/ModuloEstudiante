@@ -5,6 +5,7 @@ package Modulo.Resultados.Controllers;
 import Modulo.Resultados.Dtos.CrearAspiranteDto;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Services.CrearAspiranteService;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/aspirante")
+@RequestMapping("/v1/Aspirante")
 public class AspiranteController {
 
     private CrearAspiranteService service;
@@ -22,20 +23,20 @@ public class AspiranteController {
         this.service = service;
     }
 
-    @PostMapping
-    public Aspirante crearAspirante(@RequestBody CrearAspiranteDto dto){
+    @PostMapping("/Crear-Aspirante")
+    public ResponseEntity<String> crearAspirante(@RequestBody CrearAspiranteDto dto){
         return this.service.Crear(dto);
 
     }
 
 
-    @GetMapping
+    @GetMapping("/Listar-Aspirante")
     public List<Aspirante> ListarUsuarios(){
         return this.service.listar();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarUsuario(@PathVariable Long id){
+    @DeleteMapping("/Eliminar-Aspirante/{id}")
+    public ResponseEntity<String> eliminarUsuario(@PathVariable @Schema(description = "agrega el numero del aspirante que deseas eliminar", example = "1 o 2 o 3 ") Long id){
         return this.service.eliminar(id);
     }
 }

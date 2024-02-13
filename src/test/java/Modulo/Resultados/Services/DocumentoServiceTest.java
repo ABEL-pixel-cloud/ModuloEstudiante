@@ -4,6 +4,7 @@ import Modulo.Resultados.Dtos.DocumentosDto;
 import Modulo.Resultados.Dtos.EstadoDocumentosDto;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
+import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,8 @@ public class DocumentoServiceTest {
 
     @Mock
     private AspiranteService aspiranteService;
+    @Mock
+    private IAspiranteRepository aspiranteRepository;
 
     @InjectMocks
     private DocumentoService documentoService;
@@ -126,34 +129,39 @@ public class DocumentoServiceTest {
         assertEquals(documentacionList.size(), result.size());
 
     }
+
     @Test
     public void testEstadoDocumentacion() {
         // Arrange
-        // se Crea una lista de aspirantes para probar
-        List<Aspirante> aspirantes = new ArrayList<>();
-        Aspirante aspirante1 = new Aspirante();
-        aspirante1.setIdaspirante(1L); // Definir un ID para el primer aspirante de tipo long con 1l
-        aspirantes.add(aspirante1);
+        Long idAspirante = 1L;
+        Boolean nuevoEstado = true;
 
-        // Crear una documentación para el primer aspirante
+        // Crear un aspirante simulado
+        Aspirante aspirante = new Aspirante();
+        aspirante.setIdaspirante(idAspirante);
+
+        // Crear una documentación simulada
         Documentacion documentacion = new Documentacion();
-        documentacion.setEstadoDocumentos(false); // Estado inicial de los documentos
+        documentacion.setEstadoDocumentos(!nuevoEstado); // Estado inicial de los documentos
 
-        // Mockear el comportamiento del repositorio para devolver la documentación cuando se busque por el aspirante
-        //(any(Aspirante.class) no importa queinstancia espesifica se pase al metodo
-        when(documentacionRepository.findByAspirante(any(Aspirante.class))).thenReturn(Optional.of(documentacion));
+        // Mockear el comportamiento del repositorio de aspirantes para devolver el aspirante cuando se busque por su ID
+        when(aspiranteRepository.findById(idAspirante)).thenReturn(Optional.of(aspirante));
+
+        // Mockear el comportamiento del repositorio de documentos para devolver la documentación cuando se busque por el aspirante
+        when(documentacionRepository.findByAspirante(aspirante)).thenReturn(Optional.of(documentacion));
 
         // Act
-        List<EstadoDocumentosDto> estadoDocumentacionList = documentoService.estadoDocumentacion(aspirantes, true);
+        assertDoesNotThrow(() -> {
+            documentoService.estadoDocumentacion(idAspirante, nuevoEstado);
+        });
 
         // Assert
-        // Verificar que la lista de DTOs no esté vacía
-        assertFalse(estadoDocumentacionList.isEmpty());
-
-        // Verificar que la documentación se haya actualizado con el nuevo estado
-        verify(documentacionRepository, times(1)).save(any(Documentacion.class));
-
-
+        // Verificar que el estado de la documentación se haya actualizado correctamente
+        assertTrue(documentacion.getEstadoDocumentos().equals(nuevoEstado));
+        // Verificar que el método save del repositorio de documentos se haya llamado una vez
+        verify(documentacionRepository, times(1)).save(documentacion);
     }
+
+
 
 }

@@ -35,8 +35,8 @@ public class Aspirante  {
     @Column(length = 100)
     private String estadoDeProceso;
 
-    @Column(length = 100)
-    private Double resultadoPruebaGorilla;
+    @Column
+    private Float resultadoPruebaGorilla;
 
     @Column(length = 100)
     private String linkDePrueba;
@@ -60,7 +60,7 @@ public class Aspirante  {
                      String nombresCompletos, Long telefono,
                      String correo, String tipoDePerfil,
                      String estadoDeProceso,
-                     Double resultadoPruebaGorilla,
+                     Float resultadoPruebaGorilla,
                      String linkDePrueba,
                      Boolean admitido,
                      String financiador,
@@ -113,7 +113,7 @@ public class Aspirante  {
         return estadoDeProceso;
     }
 
-    public Double getResultadoPruebaGorilla() {
+    public Float getResultadoPruebaGorilla() {
         return resultadoPruebaGorilla;
     }
 
@@ -135,10 +135,6 @@ public class Aspirante  {
 
     public String getObservacion() {
         return observacion;
-    }
-
-    public Estudiante getEstudiante() {
-        return estudiante;
     }
 
 

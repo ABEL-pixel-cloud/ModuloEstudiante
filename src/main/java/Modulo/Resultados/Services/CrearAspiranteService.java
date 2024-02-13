@@ -4,6 +4,8 @@ package Modulo.Resultados.Services;
 
 import Modulo.Resultados.Dtos.CrearAspiranteDto;
 import Modulo.Resultados.Entity.Aspirante;
+import Modulo.Resultados.Exceptions.ExceptionHandlers;
+import Modulo.Resultados.Exceptions.ResultadosApiException;
 import Modulo.Resultados.Publisher.Publisher;
 import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 
@@ -24,6 +27,7 @@ public class CrearAspiranteService {
 
     Publisher publisher;
     IDocumentacionRepository documentacionRepository;
+
 
 
     @Autowired
@@ -38,7 +42,13 @@ public class CrearAspiranteService {
 
     // se implementa este metodo para crear un Aspirante
 
-    public Aspirante Crear(CrearAspiranteDto dto){
+    public ResponseEntity<String> Crear(CrearAspiranteDto dto){
+        Optional<Aspirante> aspiranteExistente = aspiranteRepository.findByCorreo(dto.getCorreo());
+
+        if (aspiranteExistente.isPresent()) {
+            // Si ya existe un aspirante con el mismo correo, generar una excepción
+           return ResponseEntity.ok("aspirante ya existe");
+        }
 
 
         // se crea el Aspirante
@@ -48,17 +58,14 @@ public class CrearAspiranteService {
                 dto.getResultado_Prueba_Gorilla(), dto.getLink_De_Prueba(),dto.getAdmitido(),
                 dto.getFinanciador(), dto.getPrograma(), dto.getObservacion());
 
-        if (nuevoAspirante.getCorreo() != null) {
+        if (nuevoAspirante.getCorreo() != null ) {
             // se guarda el Aspirante
             aspiranteRepository.save(nuevoAspirante);
             // se manda el correo por defecto al crear el aspirante
             crearEmailPorDefecto(nuevoAspirante.getCorreo());
-        } else {
-            System.err.println("Intento de crear un Aspirante con correo nulo.");
+        } else throw new IllegalArgumentException("La dirección de correo electrónico es nula o está vacía");
 
-        }
-
-        return nuevoAspirante;
+        return ResponseEntity.ok("se ha creado el aspirante");
     }
 
     // se implementa este metodo para mandar por defecto el correo al crear el Aspirante

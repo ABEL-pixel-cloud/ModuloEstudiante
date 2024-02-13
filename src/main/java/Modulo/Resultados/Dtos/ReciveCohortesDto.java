@@ -15,11 +15,11 @@ import java.util.List;
 @NoArgsConstructor // genera un constructor sin argumentos
 @AllArgsConstructor // constructor con todos los parametros
 public class ReciveCohortesDto {
-    private List<Estudiante> idEstudiante;
+    private Long idEstudiante;
 
     private String cohorte;
 
-    public List<Estudiante> getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 

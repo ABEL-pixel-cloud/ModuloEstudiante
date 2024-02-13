@@ -32,6 +32,7 @@ public class CohorteServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
+
     @Test
     public void testCreacionDeCohorte() {
         // Arrange
@@ -49,10 +50,12 @@ public class CohorteServiceTest {
         when(estudianteRepository.findById(1L)).thenReturn(Optional.of(estudiante));
 
         // Act
-        cohorteService.creacionDeCohorte(estudiantes, cohorte);
+        cohorteService.creacionDeCohorte(estudiante.getIdEstudiante(), cohorte);
 
         // Assert
         verify(cohorteRepository, times(1)).save(any());
         verify(estudianteRepository, times(1)).save(any());
     }
+
+
 }

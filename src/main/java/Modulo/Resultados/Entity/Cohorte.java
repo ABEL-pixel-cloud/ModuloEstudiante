@@ -17,8 +17,6 @@ public class Cohorte {
     @Column
     private String cohorte;
 
-    @Column
-    private String fechaDeAsignacion;
 
     @OneToMany(mappedBy = "cohorte")
     List<Estudiante> Cohorte;
@@ -26,9 +24,7 @@ public class Cohorte {
     public Cohorte() {
     }
 
-    public Long getIdAsignacionDeCohorte() {
-        return idAsignacionDeCohorte;
-    }
+
 
     public String getCohorte() {
         return cohorte;

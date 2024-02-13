@@ -30,43 +30,36 @@ public class EstudianteService {
         this.estudianteRepository = estudianteRepository;
     }
 
+public void crearEstudiantes(Long idAspirante) {
+    // Buscar el aspirante en la base de datos por su ID
+    Optional<Aspirante> aspiranteOptional = aspiranteRepository.findById(idAspirante);
 
+    // Verificar si el aspirante existe
+    if (aspiranteOptional.isPresent()) {
+        Aspirante aspiranteEncontrado = aspiranteOptional.get();
 
+        Optional<Documentacion> documentacionOptional = documentacionRepository.findByAspirante(aspiranteEncontrado);
+        if (documentacionOptional.isPresent()) {
+            Documentacion documentacion = documentacionOptional.get();
+            if (documentacion.getEstadoDocumentos()) {
+                Estudiante estudiante = Estudiante.builder()
+                        .nombre(aspiranteEncontrado.getNombresCompletos())
+                        .cedula(String.valueOf(aspiranteEncontrado.getDocumento()))
+                        .programa(aspiranteEncontrado.getPrograma())
+                        .aspirante(aspiranteEncontrado)
+                        .build();
 
-    public void crearEstudiantes(List<Aspirante> idaspirante) {
-
-        for (Aspirante aspirante : idaspirante) {
-            // Obtener el ID del aspirante actual
-            Long idAspirante = aspirante.getIdaspirante();
-
-            // Buscar el aspirante en la base de datos por su ID
-            Optional<Aspirante> aspiranteOptional = aspiranteRepository.findById(idAspirante);
-
-            // Verificar si el aspirante existe
-            if (aspiranteOptional.isPresent()) {
-                Aspirante aspiranteEncontrado = aspiranteOptional.get();
-
-
-                Optional<Documentacion> documentacion = documentacionRepository.findByAspirante(aspirante);
-                if (documentacion.isPresent() && documentacion.get().getEstadoDocumentos()) {
-                    Estudiante estudiante1= Estudiante.builder()
-                            .nombre(aspiranteEncontrado.getNombresCompletos())
-                            .cedula(String.valueOf(aspiranteEncontrado.getDocumento()))
-                            .programa(aspiranteEncontrado.getPrograma())
-                            .aspirante(aspiranteEncontrado)
-                            .build();
-
-                    estudianteRepository.save(estudiante1);
-
-                } else {
-                    throw new RuntimeException("no se puede guardar el estudiante");
-                }
-
+                estudianteRepository.save(estudiante);
             } else {
-                throw new EntityNotFoundException("No se encontró el aspirante con ID: " + idAspirante);
+                throw new RuntimeException("No se puede guardar el estudiante porque la documentación no está completa.");
             }
+        } else {
+            throw new RuntimeException("No se encontró documentación para el aspirante con ID: " + idAspirante);
         }
+    } else {
+        throw new EntityNotFoundException("No se encontró el aspirante con ID: " + idAspirante);
     }
+}
 
 
 

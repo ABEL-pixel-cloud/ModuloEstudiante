@@ -4,6 +4,7 @@ import Modulo.Resultados.Dtos.DocumentosDto;
 import Modulo.Resultados.Dtos.EstadoDocumentosDto;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Documentacion;
+import Modulo.Resultados.Repositories.IAspiranteRepository;
 import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,14 @@ import java.util.stream.Collectors;
 public class DocumentoService implements IDocumentacionService {
     private IDocumentacionRepository documentacionRepository;
     private AspiranteService aspiranteService;
+
+    private IAspiranteRepository aspiranteRepository;
     @Autowired
     public DocumentoService(IDocumentacionRepository documentacionRepository,
-                            AspiranteService aspiranteService) {
+                            AspiranteService aspiranteService,IAspiranteRepository aspiranteRepository) {
         this.documentacionRepository = documentacionRepository;
-
         this.aspiranteService = aspiranteService;
+        this.aspiranteRepository=aspiranteRepository;
     }
 
 
@@ -104,7 +107,7 @@ public class DocumentoService implements IDocumentacionService {
             String urlActa = null;
             if (dbFile.getIddocumentacion() != null) {
                 urlActa = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("api/documentos/acta/")
+                        .path("api/documentos/descargar-acta/")
                         .path(dbFile.getIddocumentacion().toString())
                         .toUriString();
             }
@@ -112,7 +115,7 @@ public class DocumentoService implements IDocumentacionService {
             String urldocumento = null;
             if (dbFile.getIddocumentacion() != null) {
                 urldocumento = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("api/documentos/cedula/")
+                        .path("api/documentos/descargar-cedula/")
                         .path(dbFile.getIddocumentacion().toString())
                         .toUriString();
             }
@@ -140,36 +143,30 @@ public class DocumentoService implements IDocumentacionService {
         return files;
     }
 
-    public List<EstadoDocumentosDto> estadoDocumentacion(List<Aspirante> idAspirante, Boolean estado) {
 
-        List<EstadoDocumentosDto> estadoDocumentacionList = new ArrayList<>();
+    public void estadoDocumentacion(Long idAspirante, Boolean estado) {
 
-        for (Aspirante aspirante : idAspirante) {
 
-            Long idAspiranteActual = aspirante.getIdaspirante(); // Acceder al ID del aspirante actual
+        // Buscar el aspirante por ID
+        Optional<Aspirante> aspiranteOptional = aspiranteRepository.findById(idAspirante);
+        if (aspiranteOptional.isPresent()) {
+            Aspirante aspirante = aspiranteOptional.get();
 
-                // Buscar la documentación asociada al aspirante
-                Optional<Documentacion> documentacion = documentacionRepository.findByAspirante(aspirante);
+            // Buscar la documentación asociada al aspirante
+            Optional<Documentacion> documentacionOptional = documentacionRepository.findByAspirante(aspirante);
+            if (documentacionOptional.isPresent()) {
+                Documentacion documentacionEncontrada = documentacionOptional.get();
+                // Establecer el nuevo estado de la documentación
+                documentacionEncontrada.setEstadoDocumentos(estado);
+                documentacionEncontrada.setAspirante(aspirante);
+                documentacionRepository.save(documentacionEncontrada);
 
-                if (documentacion.isPresent()) {
-                    Documentacion documentacionEncontrada = documentacion.get();
-                    // Establecer el nuevo estado de la documentación
-                    documentacionEncontrada.setEstadoDocumentos(estado);
-                    documentacionEncontrada.setAspirante(aspirante);
-                    documentacionRepository.save(documentacionEncontrada);
-
-                    // Crear un DTO de estado de documentos y agregarlo a la lista
-                    EstadoDocumentosDto documentosDto = new EstadoDocumentosDto(
-                            (idAspiranteActual),
-                            documentacionEncontrada.getEstadoDocumentos());
-                    estadoDocumentacionList.add(documentosDto);
-                } else {
-
-                     throw new RuntimeException("No se encontró documentación para el aspirante con ID:");
-                }
-
+            } else {
+                throw new RuntimeException("No se encontró documentación para el aspirante con ID: " + idAspirante);
+            }
+        } else {
+            throw new RuntimeException("No se encontró aspirante con ID: " + idAspirante);
         }
-        return estadoDocumentacionList;
     }
 
 

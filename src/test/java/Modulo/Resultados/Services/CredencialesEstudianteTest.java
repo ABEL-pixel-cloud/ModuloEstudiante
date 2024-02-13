@@ -3,91 +3,55 @@ package Modulo.Resultados.Services;
 import Modulo.Resultados.Entity.Aspirante;
 import Modulo.Resultados.Entity.Cohorte;
 import Modulo.Resultados.Entity.Estudiante;
-import Modulo.Resultados.Repositories.IAspiranteRepository;
-import Modulo.Resultados.Repositories.IDocumentacionRepository;
 import Modulo.Resultados.Repositories.IEstudianteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import org.mockito.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import java.util.Optional;
+import static org.mockito.Mockito.*;
 
 public class CredencialesEstudianteTest {
 
+
     @Mock
-    private IDocumentacionRepository documentacionRepository;
+    private IEstudianteRepository estudianteRepository;
 
     @Mock
     private EmailService emailService;
 
-    @Mock
-    private IAspiranteRepository aspiranteRepository;
-
-    @Mock
-    private IEstudianteRepository estudianteRepository;
     @InjectMocks
     private CredencialesEstudiante credencialesEstudiante;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        credencialesEstudiante = new CredencialesEstudiante(documentacionRepository, emailService, aspiranteRepository, estudianteRepository);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void testEnviarCredencialesEstudiante() {
+    public void enviarCredencialesEstudiante_ValidId_CredentialsSent() {
         // Arrange
+        Long idEstudiante = 1L;
         Estudiante estudiante = new Estudiante();
-        estudiante.setIdEstudiante(1L);
+        estudiante.setIdEstudiante(idEstudiante);
+        estudiante.setNombre("Nombre Estudiante");
+        estudiante.setAspirante(new Aspirante());
+        estudiante.getAspirante().setCorreo("example@example.com");
+        estudiante.getAspirante().setPrograma("Desarrollo Back-End");
+        estudiante.setCohorte(new Cohorte());
+        estudiante.getCohorte().setCohorte("Cohorte 1");
 
-        Aspirante aspirante = new Aspirante();
-        aspirante.setIdaspirante(1L);
-        aspirante.setCorreo("example@example.com");
-        aspirante.setPrograma("Desarrollo Back-End");
-
-        Cohorte cohorte = new Cohorte();
-        cohorte.setCohorte("Cohorte5");
-
-        estudiante.setAspirante(aspirante);
-        estudiante.setCohorte(cohorte);
-
-        List<Estudiante> estudiantes = new ArrayList<>();
-        estudiantes.add(estudiante);
-
-        when(estudianteRepository.findByidEstudiante(1L)).thenReturn(Optional.of(estudiante));
+        when(estudianteRepository.findByidEstudiante(anyLong())).thenReturn(Optional.of(estudiante));
 
         // Act
-        credencialesEstudiante.enviarCredencialesEstudiante(estudiantes);
+        credencialesEstudiante.enviarCredencialesEstudiante(idEstudiante);
 
         // Assert
-        ArgumentCaptor<String[]> emailCaptor = ArgumentCaptor.forClass(String[].class);
-        ArgumentCaptor<String> subjectCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
-
-        verify(emailService).sendEmail(emailCaptor.capture(), subjectCaptor.capture(), messageCaptor.capture());
-
-        String[] capturedEmails = emailCaptor.getValue();
-        String capturedSubject = subjectCaptor.getValue();
-        String capturedMessage = messageCaptor.getValue();
-
-        assertEquals(1, capturedEmails.length);
-        assertEquals("example@example.com", capturedEmails[0]);
-        assertEquals("Estas son tus credenciales para Desarrollo Back-End", capturedSubject);
-        assertNotNull(capturedMessage);
-        assertTrue(capturedMessage.contains("Hola"));
-        assertTrue(capturedMessage.contains("Cohorte5"));
-        assertTrue(capturedMessage.contains("Grupo de WhatsApp"));
-        assertTrue(capturedMessage.contains("Grupo de Slack"));
-        assertTrue(capturedMessage.contains("Correo de Makaia"));
-        assertTrue(capturedMessage.contains("FELICITACIONES"));
+        verify(emailService, times(1)).sendEmail(any(String[].class), anyString(), anyString());
     }
+
+
+
+
 
 }

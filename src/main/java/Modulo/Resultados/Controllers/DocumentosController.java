@@ -11,12 +11,15 @@ import Modulo.Resultados.Services.CredencialesEstudiante;
 import Modulo.Resultados.Services.DocumentoService;
 import Modulo.Resultados.Services.EstudianteService;
 import Modulo.Resultados.Services.CohorteService;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,13 +44,19 @@ public class DocumentosController {
         this.documentoService = documentoService;
         this.aspirante = aspirante;
         this.estudianteService = estudianteService;
-        this.serviceCohorte=serviceCohorte;
-    }
+        this.serviceCohorte=serviceCohorte;}
 
 
-    @PostMapping("/cargar")
-    public ResponseEntity<ResponseMessage> cargarArchivo(@RequestParam("acta") MultipartFile acta, @RequestParam("documento") MultipartFile documento,
-                                                         @RequestParam("cedulaAspirante") Long cedulaAspirante)
+
+
+
+
+
+
+    @PostMapping(value = "/cargarArchivos", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ResponseMessage> cargarArchivo(@RequestPart("acta") @Schema(description = "Archivo del acta a cargar", format = "binary") MultipartFile acta,
+                                                         @RequestPart("documento") @Schema(description = "Archivo del documento a cargar", format = "binary") MultipartFile documento,
+                                                         @RequestParam("cedulaAspirante") @Schema(description = "Cédula del aspirante", example = "1234567890") Long cedulaAspirante)
             throws IOException {
 
         documentoService.store(acta,documento,cedulaAspirante);
@@ -56,43 +65,7 @@ public class DocumentosController {
 
     }
 
-    @PostMapping("/estadoDocumento")
-    public ResponseEntity<List<EstadoDocumentosDto>> estadoDocumento(@RequestBody ReciveDocumentosDto request)  {
-        List<EstadoDocumentosDto> estadoDocumentacionList = documentoService.estadoDocumentacion(request.getIdAspirante(), request.getEstado());
-       /* aspirante.enviarCredenciales(request.getIdAspirante()); */
-        estudianteService.crearEstudiantes(request.getIdAspirante());
-        return ResponseEntity.ok(estadoDocumentacionList);
-    }
-    @PostMapping("/asignacionCohorte")
-    public void cohorte(@RequestBody ReciveCohortesDto request)  {
-          serviceCohorte.creacionDeCohorte(request.getIdEstudiante(),request.getCohorte());
-          aspirante.enviarCredencialesEstudiante(request.getIdEstudiante());
-
-    }
-
-    @GetMapping("cedula/{id}")
-    public ResponseEntity<byte[]> descargarArchivo(@PathVariable UUID id) throws FileNotFoundException {
-        Documentacion documentacion=documentoService.getfile(id).get();
-        return ResponseEntity.status(HttpStatus.OK)
-                .header(HttpHeaders.CONTENT_TYPE,  documentacion.getTipoDocumentocedula())
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +  documentacion.getDocumentoCedula() + "\"")
-                .body(documentacion.getDataDocumentoCedula());
-
-    }
-    @GetMapping("acta/{id}")
-    public ResponseEntity<byte[]> descargarArchivoacta(@PathVariable UUID id) throws FileNotFoundException {
-        Documentacion documentacion=documentoService.getfile(id).get();
-        return ResponseEntity.status(HttpStatus.OK)
-                .header(HttpHeaders.CONTENT_TYPE, documentacion.getTipoDocumentoacta())
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + documentacion.getDocumentoActa() + "\"")
-                .body(documentacion.getDataDocumentoActa());
-
-    }
-
-
-
-
-    @GetMapping("/documento")
+    @GetMapping("/listarDocumentos")
     public ResponseEntity<List<DocumentosDto>> listarArchivos(){
         List<DocumentosDto> documento=documentoService.getAllFiles();
         if (documento.isEmpty()) {
@@ -101,6 +74,49 @@ public class DocumentosController {
             return ResponseEntity.status(HttpStatus.OK).body(documento);
         }
     }
+
+
+
+    @PostMapping("/agregarEstadoDocumento")
+    public ResponseEntity<ResponseMessage> estadoDocumento(@RequestParam("idaspirante")
+                                                               @Schema(description = "numero del aspirante", example = "1 o 2 o 3") Long id,
+                                                           @RequestParam("estado")  @Schema(description = "Estado del documento", example = "true o false") Boolean estado) throws IOException {
+
+
+        documentoService.estadoDocumentacion(id, estado);
+        estudianteService.crearEstudiantes(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseMessage("estado agregado"));
+    }
+
+    @PostMapping("/asignarCohorte")
+    public void cohorte(@RequestParam("idaspirante") @Schema(description = "numero del aspirante", example = "1 o 2 o 3") Long id, @RequestParam("Cohorte") @Schema(description = "grupo a pertenecer", example = "1 o 2 o 3") String cohorte)  {
+          serviceCohorte.creacionDeCohorte(id,cohorte);
+          aspirante.enviarCredencialesEstudiante(id);
+
+    }
+
+
+    @GetMapping("descargar-cedula/{id}")
+    public ResponseEntity<byte[]> descargarArchivo(@PathVariable  @Schema(description = "cadena de 32 digitos hexadecimal  ", example = "550e8400-e29b-41d4-a716-446655440000") UUID id) throws FileNotFoundException {
+        Documentacion documentacion = documentoService.getfile(id).get();
+        return ResponseEntity.status(HttpStatus.OK)
+                .header(HttpHeaders.CONTENT_TYPE, documentacion.getTipoDocumentocedula())
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + documentacion.getDocumentoCedula() + "\"")
+                .body(documentacion.getDataDocumentoCedula());
+
+    }
+    @GetMapping("descargar-acta/{id}")
+    public ResponseEntity<byte[]> descargarArchivoacta(@PathVariable  @Schema(description = "cadena de 32 digitos hexadecimal  ", example = "550e8400-e29b-41d4-a716-446655440000") UUID id) throws FileNotFoundException {
+            Documentacion documentacion = documentoService.getfile(id).get();
+            return ResponseEntity.status(HttpStatus.OK)
+                    .header(HttpHeaders.CONTENT_TYPE, documentacion.getTipoDocumentoacta())
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + documentacion.getDocumentoActa() + "\"")
+                    .body(documentacion.getDataDocumentoActa());
+
+
+        }
+
 
 
 }

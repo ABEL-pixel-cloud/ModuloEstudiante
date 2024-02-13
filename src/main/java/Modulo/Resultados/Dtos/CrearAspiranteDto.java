@@ -20,7 +20,7 @@ public class CrearAspiranteDto {
 
     private String estado_De_Proceso;
 
-    private Double resultado_Prueba_Gorilla;
+    private Float resultado_Prueba_Gorilla;
 
     private String link_De_Prueba;
 
@@ -61,7 +61,7 @@ public class CrearAspiranteDto {
         return estado_De_Proceso;
     }
 
-    public Double getResultado_Prueba_Gorilla() {
+    public Float getResultado_Prueba_Gorilla() {
         return resultado_Prueba_Gorilla;
     }
 

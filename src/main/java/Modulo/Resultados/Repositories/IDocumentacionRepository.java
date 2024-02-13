@@ -16,6 +16,8 @@ public interface IDocumentacionRepository extends JpaRepository<Documentacion, U
     Optional<Documentacion> findByAspirante(Aspirante aspirante);
     @Query
     Optional<Documentacion> findByAspiranteAndEstadoDocumentosTrue(Aspirante aspirante);
+    @Query
+    Optional<Documentacion> findByAspirante_Idaspirante(Long idAspirante);
 
 
 }
