@@ -90,7 +90,7 @@ public class DocumentosController {
     }
 
     @PostMapping("/asignarCohorte")
-    public void cohorte(@RequestParam("idaspirante") @Schema(description = "numero del aspirante", example = "1 o 2 o 3") Long id, @RequestParam("Cohorte") @Schema(description = "grupo a pertenecer", example = "1 o 2 o 3") String cohorte)  {
+    public void cohorte(@RequestParam("idestudiante") @Schema(description = "numero del estudiante", example = "1 o 2 o 3") Long id, @RequestParam("Cohorte") @Schema(description = "grupo a pertenecer", example = "1 o 2 o 3") String cohorte)  {
           serviceCohorte.creacionDeCohorte(id,cohorte);
           aspirante.enviarCredencialesEstudiante(id);
 
