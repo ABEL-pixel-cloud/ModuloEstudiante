@@ -40,11 +40,11 @@ Swagger (Documentación de la API)
 
 <h2>Patrones de Diseño Utilizados </h2>
 <p>
-Uso de DTO (Objeto de Transferencia de Datos): <br>
-En el microservicio Estudiantes, se implementa el uso de DTOs para facilitar la transferencia eficiente de datos entre los diferentes componentes del sistema. Los DTOs se utilizan para representar la información relativa a los aspirantes, documentos, correos electrónicos y otras entidades relevantes. <br><br>
+Uso de DTO (Objeto de Transferencia de Datos): <br><br>
+En el microservicio Resultado, se implementa el uso de DTOs para facilitar la transferencia eficiente de datos entre los diferentes componentes del sistema. Los DTOs se utilizan para representar la información relativa a los aspirantes, documentos, correos electrónicos y otras entidades relevantes. <br><br>
 
 
-Patrón State (Estado):<br>
-En el contexto del microservicio Estudiantes, se implementa el patrón State para controlar el estado de los documentos enviados por los aspirantes a lo largo del proceso de gestión y aprobación. Este patrón permite que un documento cambie su comportamiento y su estado interno en función de su estado actual. 
+Patrón State (Estado):<br><br>
+En el contexto del microservicio Resultado, se implementa el patrón State para controlar el estado de los documentos enviados por los aspirantes a lo largo del proceso de gestión y aprobación. Este patrón permite que un documento cambie su comportamiento y su estado interno en función de su estado actual. 
 <p>
 
