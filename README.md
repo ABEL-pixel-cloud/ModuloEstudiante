@@ -48,3 +48,8 @@ Patrón State (Estado):<br><br>
 En el contexto del microservicio Resultado, se implementa el patrón State para controlar el estado de los documentos enviados por los aspirantes a lo largo del proceso de gestión y aprobación. Este patrón permite que un documento cambie su comportamiento y su estado interno en función de su estado actual. 
 <p>
 
+
+<h2>Diagrama Entidad Relación</h2>
+
+<img src="<img src="ruta_de_la_imagen.jpg" alt="Descripción de la imagen">" alt="Diagrama de clases">
+
