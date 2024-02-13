@@ -57,6 +57,42 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 
 <img src="https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/DiagramaBaseDeDatos.PNG" alt="Diagrama entidad relacion">
 
+<h2>Enpoints </h2>
+
+<h3>Enpoint para enviar correo manualmente  </h3>
+
+<h3>Post: api/v1/aspirante </h3>
+
+<p>crear nuevo aspirante  en la base de datos con la información proporcionada en el cuerpo de la solicitud.<p><br><br>
+<p>Parámetros de entrada: <p><br><br>
+  
+<ul>
+    <li>tipoDeDocumento</li>
+    <li>documento</li>
+    <li>nombresCompletos</li>
+   <li>telefono</li>
+    <li>correo</li>
+    <li>tipoDePerfil</li>
+   <li>estadoDeProceso</li>
+    <li>resultadoPruebaGorilla</li>
+    <li>linkDePrueba</li>
+   <li>admitido</li>
+    <li>financiador</li>
+    <li>programa</li>
+   <li>observacion</li>
+</ul>
+
+<h3>Ejemplo de la solicitud: </h3>
+
+![crearUsuario](https://github.com/ABEL-pixel-cloud/ModuloResultados/assets/138513761/255ae0c8-825d-40c9-988e-ce007bac3a48)
+
+
+
+
+
+
+
+
 
 
 
