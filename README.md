@@ -48,8 +48,15 @@ Patrón State (Estado):<br><br>
 En el contexto del microservicio Resultado, se implementa el patrón State para controlar el estado de los documentos enviados por los aspirantes a lo largo del proceso de gestión y aprobación. Este patrón permite que un documento cambie su comportamiento y su estado interno en función de su estado actual. 
 <p>
 
+<h2>Diagrama UML</h2>
+
+<img src="https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/UML.png" alt="Diagrama Uml">
+
 
 <h2>Diagrama Entidad Relación</h2>
 
 <img src="https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/DiagramaBaseDeDatos.PNG" alt="Diagrama entidad relacion">
+
+
+
 
