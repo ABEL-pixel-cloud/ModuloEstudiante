@@ -83,6 +83,7 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 </ul>
 
 <h3>Ejemplo de la solicitud: </h3>
+<img
 {
   "tipo_De_Documento": "string",
   "documento": 0,
@@ -98,6 +99,7 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
   "programa": "string",
   "observacion": "string"
 }
+>
 
 <h3>La API devuleve un mensaje notificando que se ha creado el aspirante: </h3>
 
