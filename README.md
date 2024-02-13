@@ -86,6 +86,12 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 
 ![crearUsuario](https://github.com/ABEL-pixel-cloud/ModuloResultados/assets/138513761/255ae0c8-825d-40c9-988e-ce007bac3a48)
 
+<h3>La API devuleve un mensaje notificando que se ha creado el aspirante: </h3>
+
+![image](https://github.com/ABEL-pixel-cloud/ModuloResultados/assets/138513761/520f9ff4-27b4-4b35-9a7c-09d6eb1caf37)
+
+
+
 
 
 
