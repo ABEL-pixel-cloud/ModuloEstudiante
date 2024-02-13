@@ -111,6 +111,52 @@ se ha creado el aspirante
 }
 </code></pre>
 
+<h3>Enpoint para listar aspirantes </h3>
+<p>Sin parámetros de entrada.<p><br><br>
+<p>Ejemplo de solicitud:<p><br><br>
+<p>La API devolverá los aspirantes encontrados en formato JSON:<p><br><br>
+
+ <p>'http://localhost:8080/v1/Aspirante/Listar-Aspirante'<p>
+
+ 
+<pre><code>
+ [
+  {
+    "idaspirante": 0,
+    "tipo_De_Documento": "string",
+    "documento": 0,
+    "nombresCompletos": "string",
+    "telefono": 0,
+    "correo": "string",
+    "tipoDePerfil": "string",
+    "estadoDeProceso": "string",
+    "resultadoPruebaGorilla": 0,
+    "linkDePrueba": "string",
+    "admitido": true,
+    "financiador": "string",
+    "programa": "string",
+    "observacion": "string",
+    "estudiante": {
+      "idEstudiante": 0,
+      "nombre": "string",
+      "cedula": "string",
+      "programa": "string",
+      "cohorte": {
+        "cohorte": "string"
+      },
+      "aspirante": "string"
+    }
+  }
+]
+  </code></pre>
+
+
+
+
+  
+
+
+
 
 
 
