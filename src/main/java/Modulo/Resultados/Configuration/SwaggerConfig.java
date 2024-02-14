@@ -16,7 +16,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 @OpenAPIDefinition(
         info=@Info(
-                title = "Modulo Resultado De Aspirantes "
+                title = "Modulo Estudiante "
         ),
         servers = {
 
