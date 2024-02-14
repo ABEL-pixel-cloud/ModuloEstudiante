@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/documentos/")
+@RequestMapping("api/documentos")
 public class DocumentosController {
 
 

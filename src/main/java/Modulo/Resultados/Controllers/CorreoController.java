@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("v1/correo")
 public class CorreoController {
 
     @Autowired
