@@ -31,13 +31,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 )
 
 public class SwaggerConfig {
-        @Bean
-        public GroupedOpenApi publicApi() {
-                return GroupedOpenApi.builder()
-                        .group("/v1/aspirante/")
-                        .pathsToMatch("/v1/aspirante/**")
-                        .build();
-        }
+
         @Bean
         public Docket api() {
                 return new Docket(DocumentationType.SWAGGER_2)
