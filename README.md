@@ -60,7 +60,7 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 <h2>Enpoints </h2>
 
 <h3>Enpoint para crear aspirante </h3>
-<h3>Post: api/v1/aspirante </h3>
+<h3>POST: api/v1/aspirante </h3>
 <p>crear nuevo aspirante  en la base de datos con la información proporcionada en el cuerpo de la solicitud.<p>
 <p>Parámetros de entrada: <p>
   
@@ -109,15 +109,89 @@ se ha creado el aspirante
 }
 </code></pre>
 
+
+<h3>Enpoint para cargar archivos </h3>
+<h3>POST:/api/documentos/cargarArchivos </h3>
+<p>parámetros de entrada<p>
+<ul>
+    <li>tipoDocumento: Cedula(String)</li>
+    <li>archivoActa: archivo a subir</li>
+    <li>archivoDocumento: archivo a subir</li>
+</ul>
+
+<p>La API gurdará los archivos en la base de datos:<p>
+<pre><code>
+{
+  "mensaje": "archivo subido correctamente"
+}
+
+</code></pre>
+
+
+
+<h3>Enpoint para agregar el estado de los documentos </h3>
+<h3>POST: /api/documentos/agregarEstadoDocumento </h3>
+<p>parámetros de entrada<p>
+<ul>
+    <li>numero del aspirante: (String)</li>
+    <li>estado del documento:false/true(Boolean)</li>
+</ul>
+<p>La API devolverá el estado de la documentacion para ese aspirante en formato JSON:<p>
+
+<pre><code>
+  {
+  "mensaje": "estado agregado"
+  }
+</code></pre>
+
+<h3>Enpoint para asignar cohorte al estudiante </h3>
+<h3>POST: /api/documentos/cargarArchivos </h3>
+<p>parámetros de entrada<p>
+<ul>
+    <li>idEstudiante: (String)</li>
+    <li>cohorte:(String)</li>
+</ul>
+<p>La API devolverá el mensaje que se ha asignado la cohorte correctamente en formato JSON:<p>
+
+<pre><code>
+  {
+  "mensaje": "cohorte asignada correctamente"
+  }
+</code></pre>
+
+
+<h3>Enpoint para listar documentos de aspirantes </h3>
+<h3>GET:api/documentos/listarDocumentos </h3>
+<p>Sin parámetros de entrada.<p>
+<p>Ejemplo de solicitud:<p>
+<p>'http://localhost:8080/api/documentos/listarDocumentos'<p>
+<p>La API devolverá los aspirantes encontrados junto con la documentacion enviada en formato JSON:<p>
+ 
+<pre><code>
+[
+  {
+    "id": 0,
+    "nombreacta": "string",
+    "urlacta": "string",
+    "tipoDocumentoacta": "string",
+    "tamanoacta": 0,
+    "nombredocumentocedula": "string",
+    "urldocumentocedula": "string",
+    "tipoDocumentocedula": "string",
+    "tamanodocumentocedula": 0,
+    "nombreAspirante": "string",
+    "cedulaAspirante": 0
+  }
+]
+</code></pre>
+
 <h3>Enpoint para listar aspirantes </h3>
+<h3>GET: v1/Aspirante/Listar-Aspirante </h3>
 <p>Sin parámetros de entrada.<p>
 <p>Ejemplo de solicitud:<p>
 <p>'http://localhost:8080/v1/Aspirante/Listar-Aspirante'<p>
 <p>La API devolverá los aspirantes encontrados en formato JSON:<p>
 
-
-
- 
 <pre><code>
  [
   {
@@ -149,94 +223,6 @@ se ha creado el aspirante
 ]
   </code></pre>
 
-<h3>Enpoint para cargar archivos </h3>
-<p>parámetros de entrada<p>
-<ul>
-    <li>tipoDocumento: Cedula(String)</li>
-    <li>archivoActa: archivo a subir</li>
-    <li>archivoDocumento: archivo a subir</li>
-</ul>
-
-<p>La API gurdará los archivos en la base de datos:<p>
-<pre><code>
-{
-  "mensaje": "archivo subido correctamente"
-}
-
-</code></pre>
-
-
-
-<h3>Enpoint para agregar el estado de los documentos </h3>
-<p>parámetros de entrada<p>
-<ul>
-    <li>numero del aspirante: (String)</li>
-    <li>estado del documento:false/true(Boolean)</li>
-</ul>
-<p>La API devolverá el estado de la documentacion para ese aspirante en formato JSON:<p>
-
-<pre><code>
-  {
-  "mensaje": "estado agregado"
-  }
-</code></pre>
-
-<h3>Enpoint para asignar cohorte al estudiante </h3>
-<p>parámetros de entrada<p>
-<ul>
-    <li>idEstudiante: (String)</li>
-    <li>cohorte:(String)</li>
-</ul>
-<p>La API devolverá el mensaje que se ha asignado la cohorte correctamente en formato JSON:<p>
-
-<pre><code>
-  {
-  "mensaje": "cohorte asignada correctamente"
-  }
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>Enpoint para listar documentos de aspirantes </h3>
-<p>Sin parámetros de entrada.<p>
-<p>Ejemplo de solicitud:<p>
-<p>'http://localhost:8080/api/documentos/listarDocumentos'<p>
-<p>La API devolverá los aspirantes encontrados junto con la documentacion enviada en formato JSON:<p>
- 
-<pre><code>
-[
-  {
-    "id": 0,
-    "nombreacta": "string",
-    "urlacta": "string",
-    "tipoDocumentoacta": "string",
-    "tamanoacta": 0,
-    "nombredocumentocedula": "string",
-    "urldocumentocedula": "string",
-    "tipoDocumentocedula": "string",
-    "tamanodocumentocedula": 0,
-    "nombreAspirante": "string",
-    "cedulaAspirante": 0
-  }
-]
-</code></pre>
 
 
 
