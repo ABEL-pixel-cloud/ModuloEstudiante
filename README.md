@@ -59,7 +59,7 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 
 <h2>Enpoints </h2>
 
-<h3>Enpoint para crear aspirante </h3> 🧑
+<h3>Enpoint para crear aspirante 🧑 </h3> 
 <h3>POST: api/v1/aspirante </h3>
 <p>crear nuevo aspirante  en la base de datos con la información proporcionada en el cuerpo de la solicitud.<p>
 <p>Parámetros de entrada: <p>
@@ -110,7 +110,7 @@ se ha creado el aspirante
 </code></pre>
 
 
-<h3>Enpoint para cargar archivos </h3>📁
+<h3>Enpoint para cargar archivos 📁</h3>
 <h3>POST:/api/documentos/cargarArchivos </h3>
 <p>parámetros de entrada<p>
 <ul>
@@ -129,7 +129,7 @@ se ha creado el aspirante
 
 
 
-<h3>Enpoint para agregar el estado de los documentos </h3>  📝
+<h3>Enpoint para agregar el estado de los documentos 📝</h3>  
 <h3>POST: /api/documentos/agregarEstadoDocumento </h3>
 <p>parámetros de entrada<p>
 <ul>
@@ -144,7 +144,7 @@ se ha creado el aspirante
   }
 </code></pre>
 
-<h3>Enpoint para asignar cohorte al estudiante </h3>🏷️
+<h3>Enpoint para asignar cohorte al estudiante 🏷️</h3>
 <h3>POST: /api/documentos/cargarArchivos </h3>
 <p>parámetros de entrada<p>
 <ul>
@@ -160,7 +160,7 @@ se ha creado el aspirante
 </code></pre>
 
 
-<h3>Enpoint para listar documentos de aspirantes </h3>📋
+<h3>Enpoint para listar documentos de aspirantes 📋</h3>
 <h3>GET:api/documentos/listarDocumentos </h3>
 <p>Sin parámetros de entrada.<p>
 <p>Ejemplo de solicitud:<p>
@@ -185,7 +185,7 @@ se ha creado el aspirante
 ]
 </code></pre>
 
-<h3>Enpoint para listar aspirantes </h3>🗒️
+<h3>Enpoint para listar aspirantes 🗒️</h3>
 <h3>GET: v1/Aspirante/Listar-Aspirante </h3>
 <p>Sin parámetros de entrada.<p>
 <p>Ejemplo de solicitud:<p>
@@ -223,7 +223,7 @@ se ha creado el aspirante
 ]
   </code></pre>
 
-<h3>Enpoint para descardar documento del aspirante </h3>📥
+<h3>Enpoint para descardar documento del aspirante 📥</h3>
 <h3>GET: /api/documentos/descargarCedula/{id} </h3>
 <p> parámetros de entrada.<p>
   
@@ -238,7 +238,7 @@ se ha creado el aspirante
   
 </code></pre>
 
-<h3>Enpoint para descardar acta del aspirante </h3>📥
+<h3>Enpoint para descardar acta del aspirante 📥</h3>
 <h3>GET: /api/documentos/descargarActa/{id} </h3>
 <p> parámetros de entrada.<p>
   
