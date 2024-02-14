@@ -47,6 +47,9 @@ En el microservicio Resultado, se implementa el uso de DTOs para facilitar la tr
 Patrón State (Estado):<br><br>
 En el contexto del microservicio Resultado, se implementa el patrón State para controlar el estado de los documentos enviados por los aspirantes a lo largo del proceso de gestión y aprobación. Este patrón permite que un documento cambie su comportamiento y su estado interno en función de su estado actual. 
 <p>
+<h2>🔍 Diagrama de proceso </h2>
+  
+![estudiantes](https://github.com/ABEL-pixel-cloud/ModuloResultados/assets/138513761/99bb15ff-a5d1-4bfe-ad7e-c05604eb3372)
 
 <h2>🔍 Diagrama UML</h2>
 
