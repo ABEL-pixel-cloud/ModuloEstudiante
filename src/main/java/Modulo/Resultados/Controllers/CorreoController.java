@@ -25,7 +25,7 @@ public class CorreoController {
     private IMailService iMailService;
 
 
-    @PostMapping("/EnviarMensaje")
+    @PostMapping("/enviarMensaje")
     public ResponseEntity<?> reciveRequestEmail(@RequestParam("Correo") @Schema(description = "Correo del aspirante", example = "dalnm@gmail.com") String[] usuario,@RequestParam("Asunto") String asunto,@RequestParam("Mensaje") String mensaje){
 
         iMailService.sendEmail(usuario,asunto,mensaje);
@@ -36,7 +36,7 @@ public class CorreoController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping(value = "/EnviarMensajeConArchivo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/enviarMensajeConArchivo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> receiveRequestEmailFile(@RequestParam("Correo") @Schema(description = "Correo del aspirante", example = "dalnm@gmail.com")String[] usuario, @RequestParam("Asunto") String asunto, @RequestParam("Mensaje") String mensaje, @RequestParam("Archivo") MultipartFile archivo ){
 
         try{

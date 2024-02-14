@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/Aspirante/")
+@RequestMapping("/v1/aspirante/")
 public class AspiranteController {
 
     private CrearAspiranteService service;
@@ -23,14 +23,14 @@ public class AspiranteController {
         this.service = service;
     }
 
-    @PostMapping("/CrearAspirante")
+    @PostMapping("/crearAspirante")
     public ResponseEntity<String> crearAspirante(@RequestBody CrearAspiranteDto dto){
         return this.service.Crear(dto);
 
     }
 
 
-    @GetMapping("/ListarAspirante")
+    @GetMapping("/listarAspirante")
     public List<Aspirante> ListarUsuarios(){
         return this.service.listar();
     }
