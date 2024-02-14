@@ -15,13 +15,13 @@ finalización de este proceso, se concluye la admisión al Bootcamp Betek
 
 <h2>Tecnologías Utilizadas: </h2>
 <p>
-Java 17<br>
-Spring Boot 3.2.2<br>
-Gestor de dependencias Maven<br>
-Motor de Base de Datos MySQL<br>
-Persistencia de datos JPA e Hibernate<br>
-Integración continua con GitHub Actions<br>
-Despliegue con Railway<br>
+Java 17 ☕<br>
+Spring Boot 3.2.2 🚀<br>
+Gestor de dependencias Maven 📦<br>
+Motor de Base de Datos MySQL  🐬<br>
+Persistencia de datos JPA e Hibernate 🏦<br>
+Integración continua con GitHub Actions 🤖<br>
+Despliegue con Railway 🛤️<br>
 <p>
 
 
@@ -38,7 +38,7 @@ Swagger (Documentación de la API)
 <p>
 
 
-<h2>Patrones de Diseño Utilizados </h2>
+<h2>🧩 Patrones de Diseño Utilizados </h2>
 <p>
 Uso de DTO (Objeto de Transferencia de Datos): <br><br>
 En el microservicio Resultado, se implementa el uso de DTOs para facilitar la transferencia eficiente de datos entre los diferentes componentes del sistema. Los DTOs se utilizan para representar la información relativa a los aspirantes, documentos, correos electrónicos y otras entidades relevantes. <br><br>
@@ -48,12 +48,12 @@ Patrón State (Estado):<br><br>
 En el contexto del microservicio Resultado, se implementa el patrón State para controlar el estado de los documentos enviados por los aspirantes a lo largo del proceso de gestión y aprobación. Este patrón permite que un documento cambie su comportamiento y su estado interno en función de su estado actual. 
 <p>
 
-<h2>Diagrama UML</h2>
+<h2>🔍 Diagrama UML</h2>
 
 <img src="https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/UML.png" alt="Diagrama Uml">
 
 
-<h2>Diagrama Entidad Relación</h2>
+<h2>🔍 Diagrama Entidad Relación</h2>
 
 <img src="https://github.com/ABEL-pixel-cloud/ModuloResultados/blob/main/Diagramas/DiagramaBaseDeDatos.PNG" alt="Diagrama entidad relacion">
 
@@ -254,11 +254,11 @@ se ha creado el aspirante
 </code></pre>
 
 
-<h3>Integración Continua con GitHub Actions</h3>
+<h3>Integración Continua con GitHub Actions 🚀 </h3>
 <p>
 La integración continua  con GitHub Actions ofrece ventajas significativas en el desarrollo de software. Al estar integrado directamente en GitHub, su configuración y uso se simplifican, lo que facilita la automatización del proceso de construcción, prueba y despliegue de aplicaciones en respuesta a cambios en el repositorio. Con una amplia variedad de acciones predefinidas y la capacidad de crear acciones personalizadas, GitHub Actions proporciona flexibilidad y personalización para adaptarse a las necesidades específicas de cada proyecto. </p>
 
-<h3>Despliegue con Railway</h3>
+<h3>Despliegue con Railway  🛤️</h3>
 <p>El despliegue con Railway ofrece ventajas significativas. En primer lugar, simplifica y acelera el proceso de despliegue de aplicaciones al proporcionar una plataforma fácil de usar. se puede desplegar sus aplicaciones con solo unos pocos comandos, lo que ahorra tiempo y esfuerzo. Además, Railway se encarga de la infraestructura subyacente, como la configuración del servidor y la gestión de recursos. Esto genera  configuraciones no complejas y permite centrarse en el desarrollo de la aplicación en sí, Railway ofrece una solución integral y eficiente para el despliegue de aplicaciones, lo que facilita el proceso y mejora la productividad.</p>
 
 
