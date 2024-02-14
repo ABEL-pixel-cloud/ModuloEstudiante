@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -30,6 +31,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 )
 
 public class SwaggerConfig {
+        @Bean
+        public GroupedOpenApi publicApi() {
+                return GroupedOpenApi.builder()
+                        .group("public")
+                        .pathsToMatch("/public/**")
+                        .build();
+        }
         @Bean
         public Docket api() {
                 return new Docket(DocumentationType.SWAGGER_2)
