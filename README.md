@@ -254,6 +254,14 @@ se ha creado el aspirante
 </code></pre>
 
 
+<h3>Integración Continua con GitHub Actions</h3>
+<p>Se utiliza GitHub Actions en este proyecto para automatizar las pruebas y el despliegue, lo que garantiza una mayor calidad del código y una entrega más rápida y confiable.</p>
+
+<h3>Despliegue con Railway</h3>
+<p>Railway se utiliza para el despliegue continuo de este proyecto, lo que permite una integración continua fluida y una implementación rápida y segura de nuevas funcionalidades.</p>
+
+
+
 
   
 
