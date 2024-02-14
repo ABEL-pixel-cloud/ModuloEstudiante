@@ -32,6 +32,28 @@ public class CrearAspiranteDto {
 
     private String observacion;
 
+    public CrearAspiranteDto() {
+    }
+
+    public CrearAspiranteDto(Long documento, String nombres_Completos,
+                             Long telefono, String correo,
+                             String tipo_De_Perfil, String estado_De_Proceso,
+                             Float resultado_Prueba_Gorilla, String link_De_Prueba,
+                             Boolean admitido, String financiador, String programa,
+                             String observacion) {
+        this.documento = documento;
+        this.nombres_Completos = nombres_Completos;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.tipo_De_Perfil = tipo_De_Perfil;
+        this.estado_De_Proceso = estado_De_Proceso;
+        this.resultado_Prueba_Gorilla = resultado_Prueba_Gorilla;
+        this.link_De_Prueba = link_De_Prueba;
+        this.admitido = admitido;
+        this.financiador = financiador;
+        this.programa = programa;
+        this.observacion = observacion;
+    }
 
     public String getTipo_De_Documento() {
         return tipo_De_Documento;
