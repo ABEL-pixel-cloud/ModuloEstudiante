@@ -62,7 +62,7 @@ public class CredencialesEstudiante {
 
                         "<p style='font-size: 14px;'> Por favor, asegúrate de unirte a estos grupos lo antes posible para que puedas comenzar a conectarte con el resto de la comunidad y " + "<br>"+
                         "acceder a toda la información relevante para tu participación en la cohorte."+"<br>"+"<br>"+
-                        "<b>FELICITACIONES y BIENVENIDO </b>" + "<b>" + nombre + "</b>" +" al Bootcamp de MAKAIA." +"<br>"+"<br"+
+                        "<b>FELICITACIONES y BIENVENIDO </b>" + "<b>" + nombre + "</b>" +" al Bootcamp de BETEK." +"<br>"+"<br"+
                         " Si tienes alguna pregunta o necesitas ayuda para unirte a alguno de estos grupos, no dudes en contactarnos  " +"<br>"+"<br>"+
                         "¡Esperamos verte pronto en nuestras plataformas!   " + "<b>"+"<br>"+"<br>"+
                         "</p>"+
@@ -103,7 +103,7 @@ public class CredencialesEstudiante {
 
                         "<p style='font-size: 14px;'> Por favor, asegúrate de unirte a estos grupos lo antes posible para que puedas comenzar a conectarte con el resto de la comunidad y " + "<br>"+
                         "acceder a toda la información relevante para tu participación en la cohorte."+"<br>"+"<br>"+
-                        "<b>FELICITACIONES y BIENVENIDO </b>" + "<b>" + nombre + "</b>" +" al Bootcamp de MAKAIA." +"<br>"+"<br"+
+                        "<b>FELICITACIONES y BIENVENIDO </b>" + "<b>" + nombre + "</b>" +" al Bootcamp de BETEK." +"<br>"+"<br"+
                         " Si tienes alguna pregunta o necesitas ayuda para unirte a alguno de estos grupos, no dudes en contactarnos  " +"<br>"+"<br>"+
                         "¡Esperamos verte pronto en nuestras plataformas!   " + "<b>"+"<br>"+"<br>"+
                         "</p>"+
@@ -143,7 +143,7 @@ public class CredencialesEstudiante {
 
                         "<p style='font-size: 14px;'> Por favor, asegúrate de unirte a estos grupos lo antes posible para que puedas comenzar a conectarte con el resto de la comunidad y " + "<br>"+
                         "acceder a toda la información relevante para tu participación en la cohorte."+"<br>"+"<br>"+
-                        "<b>FELICITACIONES y BIENVENIDO </b>" + "<b>" + nombre + "</b>" +" al Bootcamp de MAKAIA." +"<br>"+"<br"+
+                        "<b>FELICITACIONES y BIENVENIDO </b>" + "<b>" + nombre + "</b>" +" al Bootcamp de BETEK." +"<br>"+"<br"+
                         " Si tienes alguna pregunta o necesitas ayuda para unirte a alguno de estos grupos, no dudes en contactarnos  " +"<br>"+"<br>"+
                         "¡Esperamos verte pronto en nuestras plataformas!   " + "<b>"+"<br>"+"<br>"+
                         "</p>"+

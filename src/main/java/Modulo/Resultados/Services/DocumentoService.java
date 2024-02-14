@@ -107,7 +107,7 @@ public class DocumentoService implements IDocumentacionService {
             String urlActa = null;
             if (dbFile.getIddocumentacion() != null) {
                 urlActa = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("api/documentos/descargar-acta/")
+                        .path("api/documentos/descargarActa/")
                         .path(dbFile.getIddocumentacion().toString())
                         .toUriString();
             }
@@ -115,7 +115,7 @@ public class DocumentoService implements IDocumentacionService {
             String urldocumento = null;
             if (dbFile.getIddocumentacion() != null) {
                 urldocumento = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("api/documentos/descargar-cedula/")
+                        .path("api/documentos/descargarCedula/")
                         .path(dbFile.getIddocumentacion().toString())
                         .toUriString();
             }

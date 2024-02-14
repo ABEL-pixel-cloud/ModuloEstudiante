@@ -47,7 +47,7 @@ public class Consumer {
             String message = "<html><body>" +
 
                     "<p style='font-size: 14px;'> Hola  "+ "<b>" + nombre +"</b>" + "<br>" + "<br>" + "<br>" +
-                    "Para <b>MAKAIA</b> es un gusto notificarte  que tu beca para el entrenamiento en  "+ "<b>"+  entrenamiento  +"</b>" + "  ha sido <b>APROBADA</b>  y pronto" + "<br>" +
+                    "Para <b>BETEK</b> es un gusto notificarte  que tu beca para el entrenamiento en  "+ "<b>"+  entrenamiento  +"</b>" + "  ha sido <b>APROBADA</b>  y pronto" + "<br>" +
                     " comenzaremos esta aventura que transformará tu vida y te conectará con oportunidades laborales en sector de la tecnología." + "<br>"+ "<br>" +
 
                     "Para legalizar tu beca y formalizar nuestro compromiso contigo y tu entrenamiento, es necesario que nos envíes el documento adjunto" + "<br>" +
@@ -75,10 +75,8 @@ public class Consumer {
                     " según corresponda.</li>" +"<br>"+"<br>"+
                     "</ul>"+
 
-                    "<p style='font-size: 14px;'> Quedamos muy atentos de tu respuesta y de nuevo <b>FELICITACIONES y BIENVENIDO (A)</b> al Bootcamp de MAKAIA." +"<br>"+"<br"+
+                    "<p style='font-size: 14px;'> Quedamos muy atentos de tu respuesta y de nuevo <b>FELICITACIONES y BIENVENIDO (A)</b> al Bootcamp de BETEK." +"<br>"+"<br"+
                     "Cordialmente," +"</p>"+"<br>"+"<br>"+
-
-                    "<img src='resources/File/makaia.png' alt='Logo de MAKAIA'>" + "<br>" + "<br>"+
                     "</p>" +
                     "</p>"+
 

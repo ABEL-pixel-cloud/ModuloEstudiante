@@ -259,10 +259,13 @@ se ha creado el aspirante
 
 <h3>Integración Continua con GitHub Actions 🚀 </h3>
 <p>
-La integración continua  con GitHub Actions ofrece ventajas significativas en el desarrollo de software. Al estar integrado directamente en GitHub, su configuración y uso se simplifican, lo que facilita la automatización del proceso de construcción, prueba y despliegue de aplicaciones en respuesta a cambios en el repositorio. Con una amplia variedad de acciones predefinidas y la capacidad de crear acciones personalizadas, GitHub Actions proporciona flexibilidad y personalización para adaptarse a las necesidades específicas de cada proyecto. </p>
+La integración continua  con GitHub Actions ofrece ventajas significativas en el desarrollo de software. Al estar integrado directamente en GitHub, su configuración y uso se simplifican, lo que facilita la automatización del proceso de construcción, prueba y despliegue de aplicaciones en respuesta a cambios en el repositorio. Con una amplia variedad de acciones predefinidas y la capacidad de crear acciones personalizadas, GitHub Actions proporciona flexibilidad y personalización para adaptarse a las necesidades específicas de cada proyecto. 
+</p>
 
 <h3>Despliegue con Railway  🛤️</h3>
-<p>El despliegue con Railway ofrece ventajas significativas. En primer lugar, simplifica y acelera el proceso de despliegue de aplicaciones al proporcionar una plataforma fácil de usar. se puede desplegar sus aplicaciones con solo unos pocos comandos, lo que ahorra tiempo y esfuerzo. Además, Railway se encarga de la infraestructura subyacente, como la configuración del servidor y la gestión de recursos. Esto genera  configuraciones no complejas y permite centrarse en el desarrollo de la aplicación en sí, Railway ofrece una solución integral y eficiente para el despliegue de aplicaciones, lo que facilita el proceso y mejora la productividad.</p>
+<p>
+El despliegue con Railway ofrece ventajas significativas. En primer lugar, simplifica y acelera el proceso de despliegue de aplicaciones al proporcionar una plataforma fácil de usar. se puede desplegar sus aplicaciones con solo unos pocos comandos, lo que ahorra tiempo y esfuerzo. Además, Railway se encarga de la infraestructura subyacente, como la configuración del servidor y la gestión de recursos. Esto genera  configuraciones no complejas y permite centrarse en el desarrollo de la aplicación en sí, Railway ofrece una solución integral y eficiente para el despliegue de aplicaciones, lo que facilita el proceso y mejora la productividad.
+</p>
 
 
 

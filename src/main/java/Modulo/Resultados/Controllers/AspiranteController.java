@@ -23,19 +23,19 @@ public class AspiranteController {
         this.service = service;
     }
 
-    @PostMapping("/Crear-Aspirante")
+    @PostMapping("/CrearAspirante")
     public ResponseEntity<String> crearAspirante(@RequestBody CrearAspiranteDto dto){
         return this.service.Crear(dto);
 
     }
 
 
-    @GetMapping("/Listar-Aspirante")
+    @GetMapping("/ListarAspirante")
     public List<Aspirante> ListarUsuarios(){
         return this.service.listar();
     }
 
-    @DeleteMapping("/Eliminar-Aspirante/{id}")
+    @DeleteMapping("/EliminarAspirante/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable @Schema(description = "agrega el numero del aspirante que deseas eliminar", example = "1 o 2 o 3 ") Long id){
         return this.service.eliminar(id);
     }

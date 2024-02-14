@@ -90,14 +90,16 @@ public class DocumentosController {
     }
 
     @PostMapping("/asignarCohorte")
-    public void cohorte(@RequestParam("idestudiante") @Schema(description = "numero del estudiante", example = "1 o 2 o 3") Long id, @RequestParam("Cohorte") @Schema(description = "grupo a pertenecer", example = "1 o 2 o 3") String cohorte)  {
+    public ResponseEntity<ResponseMessage> cohorte(@RequestParam("idestudiante") @Schema(description = "numero del estudiante", example = "1 o 2 o 3") Long id, @RequestParam("Cohorte") @Schema(description = "grupo a pertenecer", example = "1 o 2 o 3") String cohorte)  {
           serviceCohorte.creacionDeCohorte(id,cohorte);
           aspirante.enviarCredencialesEstudiante(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseMessage(" cohorte asignada correctamente"));
 
     }
 
 
-    @GetMapping("descargar-cedula/{id}")
+    @GetMapping("descargarCedula/{id}")
     public ResponseEntity<byte[]> descargarArchivo(@PathVariable  @Schema(description = "cadena de 32 digitos hexadecimal  ", example = "550e8400-e29b-41d4-a716-446655440000") UUID id) throws FileNotFoundException {
         Documentacion documentacion = documentoService.getfile(id).get();
         return ResponseEntity.status(HttpStatus.OK)
@@ -106,7 +108,7 @@ public class DocumentosController {
                 .body(documentacion.getDataDocumentoCedula());
 
     }
-    @GetMapping("descargar-acta/{id}")
+    @GetMapping("descargarActa/{id}")
     public ResponseEntity<byte[]> descargarArchivoacta(@PathVariable  @Schema(description = "cadena de 32 digitos hexadecimal  ", example = "550e8400-e29b-41d4-a716-446655440000") UUID id) throws FileNotFoundException {
             Documentacion documentacion = documentoService.getfile(id).get();
             return ResponseEntity.status(HttpStatus.OK)
