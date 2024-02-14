@@ -223,6 +223,40 @@ se ha creado el aspirante
 ]
   </code></pre>
 
+<h3>Enpoint para descardar documento del aspirante </h3>
+<h3>GET: /api/documentos/descargarCedula/{id} </h3>
+<p> parámetros de entrada.<p>
+  
+  <ul>
+    <li>id: cadena de 32 digitos hexadecimal(String)</li>
+</ul>
+<p>La API genera una url de descarga:<p>
+
+<pre><code>
+  
+   Download file
+  
+</code></pre>
+
+<h3>Enpoint para descardar acta del aspirante </h3>
+<h3>GET: /api/documentos/descargarActa/{id} </h3>
+<p> parámetros de entrada.<p>
+  
+  <ul>
+    <li>id: cadena de 32 digitos hexadecimal(String)</li>
+</ul>
+<p>La API genera una url de descarga:<p>
+
+<pre><code>
+  
+   Download file
+  
+</code></pre>
+
+
+
+  
+
 
 
 
