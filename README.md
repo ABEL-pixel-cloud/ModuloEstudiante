@@ -1,8 +1,8 @@
 # ModuloResultados
 
-<h1 align=center >API REST RESULTADOS (MICROSERVICIO) </h1>
+<h1 align=center >API REST ESTUDIANTE (MICROSERVICIO) </h1>
 <p>
-El Microservicio de Resultados se caracteriza por su enfoque centrado en la automatización 
+El Microservicio de Estudiante se caracteriza por su enfoque centrado en la automatización 
 exhaustiva del proceso de admisión al Bootcamp Betek. Desde el momento en que se 
 reciben los aspirantes aceptados, el sistema se encarga automáticamente de enviar un 
 correo con la documentación requerida a cada aspirante.  Los documentos enviados por los 
