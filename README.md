@@ -61,8 +61,8 @@ En el contexto del microservicio Resultado, se implementa el patrón State para 
 
 <h3>Enpoint para crear aspirante </h3>
 <h3>Post: api/v1/aspirante </h3>
-<p>crear nuevo aspirante  en la base de datos con la información proporcionada en el cuerpo de la solicitud.<p><br><br>
-<p>Parámetros de entrada: <p><br><br>
+<p>crear nuevo aspirante  en la base de datos con la información proporcionada en el cuerpo de la solicitud.<p><br>
+<p>Parámetros de entrada: <p><br>
   
 <ul>
     <li>tipoDeDocumento</li>
