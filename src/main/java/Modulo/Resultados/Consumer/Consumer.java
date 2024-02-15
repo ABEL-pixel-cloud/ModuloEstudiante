@@ -1,3 +1,4 @@
+/*
 package Modulo.Resultados.Consumer;
 
 
@@ -103,3 +104,5 @@ public class Consumer {
 
     }
 }
+
+ */

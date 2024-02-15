@@ -1,3 +1,5 @@
+/*
+
 package Modulo.Resultados.Publisher;
 
 import org.springframework.amqp.core.Queue;
@@ -21,3 +23,5 @@ public class Publisher {
 
     }
 }
+
+ */

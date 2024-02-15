@@ -1,3 +1,4 @@
+/*
 package Modulo.Resultados.Publisher;
 
 
@@ -19,3 +20,5 @@ public class PublisherConfig {
 
     }
 }
+
+ */
