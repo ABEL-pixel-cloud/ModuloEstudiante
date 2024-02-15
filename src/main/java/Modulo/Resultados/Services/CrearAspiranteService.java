@@ -127,7 +127,7 @@ public class CrearAspiranteService {
 
 
                 // se proporciona la ruta del archivo que deseas adjuntar al correo
-                String filePath = "D:\\Desktop\\ModuloResultados\\Resultados\\src\\main\\resources\\File\\ACTADE COMPROMISO.pdf";
+                String filePath = "ModuloEstudiante\\src\\main\\resources\\File\\ACTADE COMPROMISO.pdf";
                 File file = new File(filePath);
 
                 // se  Verifica si el archivo existe antes de intentar adjuntarlo
