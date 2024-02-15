@@ -1,5 +1,6 @@
 package Modulo.Resultados.Publisher;
 
+
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
