@@ -74,14 +74,12 @@ public class CrearAspiranteService {
              */
 
 
-            Optional<Aspirante> aspirante = aspiranteRepository.findByCorreo(nuevoAspirante.getCorreo());
 
-            if (aspirante.isPresent()) {
-                Aspirante aspirante1 = aspirante.get();
+                String correoAspirante = nuevoAspirante.getCorreo();
 
-                String nombre = aspirante1.getNombresCompletos();
+                String nombre = nuevoAspirante.getNombresCompletos();
 
-                String entrenamiento = aspirante1.getPrograma();
+                String entrenamiento = nuevoAspirante.getPrograma();
 
                 // Asunto
                 String subject = " ¡Estás a un paso de empezar tu entrenamiento!";
@@ -134,17 +132,10 @@ public class CrearAspiranteService {
 
                 // se  Verifica si el archivo existe antes de intentar adjuntarlo
                 if (file.exists()) {
-                    service.sendEmailWithFile(new String[]{nuevoAspirante.getCorreo()}, subject, message, file);
+                    service.sendEmailWithFile(new String[]{correoAspirante}, subject, message, file);
                 } else {
                     System.out.println("El archivo no existe en la ruta especificada.");
                 }
-
-
-            } else {
-                System.out.println("el aspirante no esta en la base de datos");
-            }
-
-
 
         } else throw new IllegalArgumentException("La dirección de correo electrónico es nula o está vacía");
 
